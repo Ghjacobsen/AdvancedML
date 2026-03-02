@@ -196,7 +196,7 @@ def plot_reconstructions(
     with torch.no_grad():
         q = model.encoder(x)
         z = q.mean  # Use mean for cleaner reconstructions
-        recon = model.decoder(z).probs  # Get Bernoulli probabilities
+        recon = model.decoder(z).base_dist.probs  # Get Bernoulli probabilities from underlying dist
     
     x = x.cpu()
     recon = recon.cpu()

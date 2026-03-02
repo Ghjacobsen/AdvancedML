@@ -181,14 +181,14 @@ class MoGPrior(nn.Module):
         self.M = M
         self.K = K
         
-        # Initialize mixture weights (logits for categorical distribution)
-        self.mixture_logits = nn.Parameter(torch.zeros(K), requires_grad=False)
+        # Learnable mixture weights (logits for categorical distribution)
+        self.mixture_logits = nn.Parameter(torch.zeros(K))
         
-        # Initialize means for each component (random initialization)
-        self.means = nn.Parameter(torch.randn(K, M), requires_grad=False)
+        # Learnable means for each component (random initialization)
+        self.means = nn.Parameter(torch.randn(K, M))
         
-        # Initialize standard deviations for each component
-        self.stds = nn.Parameter(torch.ones(K, M), requires_grad=False)
+        # Learnable log-standard deviations for each component (softplus for positivity)
+        self.log_stds = nn.Parameter(torch.zeros(K, M))
 
     def forward(self):
         """
@@ -200,8 +200,9 @@ class MoGPrior(nn.Module):
         # Categorical distribution over mixture components
         mix = td.Categorical(logits=self.mixture_logits)
         
-        # Component distributions (Gaussians)
-        comp = td.Independent(td.Normal(loc=self.means, scale=self.stds), 1)
+        # Component distributions (Gaussians) with softplus to ensure positive stds
+        stds = torch.nn.functional.softplus(self.log_stds)
+        comp = td.Independent(td.Normal(loc=self.means, scale=stds), 1)
         
         # Mixture of Gaussians
         return td.MixtureSameFamily(mix, comp)

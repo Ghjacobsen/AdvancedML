@@ -1,0 +1,164 @@
+========================================
+  Job array index : 8
+  Prior           : flow
+  Seed            : 43
+  Run ID          : 1
+  Save dir        : models/flow/run_1
+  Device          : cpu
+========================================
+Training on: cpu
+
+============================================================
+Training VAE with FLOW prior
+Latent dim: 20, Hidden dim: 256
+============================================================
+
+Epoch   1 | Train Loss: 181.74 | Test ELBO: -139.46
+Epoch   2 | Train Loss: 126.01 | Test ELBO: -114.99
+Epoch   3 | Train Loss: 111.42 | Test ELBO: -105.40
+Epoch   4 | Train Loss: 103.36 | Test ELBO: -99.58
+Epoch   5 | Train Loss: 98.33 | Test ELBO: -95.67
+Epoch   6 | Train Loss: 94.72 | Test ELBO: -92.65
+Epoch   7 | Train Loss: 92.14 | Test ELBO: -90.92
+Epoch   8 | Train Loss: 90.20 | Test ELBO: -89.42
+Epoch   9 | Train Loss: 88.65 | Test ELBO: -88.14
+Epoch  10 | Train Loss: 87.32 | Test ELBO: -86.82
+Epoch  11 | Train Loss: 86.26 | Test ELBO: -86.23
+Epoch  12 | Train Loss: 85.35 | Test ELBO: -85.51
+Epoch  13 | Train Loss: 84.52 | Test ELBO: -84.79
+Epoch  14 | Train Loss: 83.92 | Test ELBO: -84.21
+Epoch  15 | Train Loss: 83.24 | Test ELBO: -83.81
+Epoch  16 | Train Loss: 82.71 | Test ELBO: -83.26
+Epoch  17 | Train Loss: 82.17 | Test ELBO: -82.83
+Epoch  18 | Train Loss: 81.62 | Test ELBO: -82.41
+Epoch  19 | Train Loss: 81.21 | Test ELBO: -82.30
+Epoch  20 | Train Loss: 80.81 | Test ELBO: -81.80
+Epoch  21 | Train Loss: 80.44 | Test ELBO: -81.60
+Epoch  22 | Train Loss: 80.09 | Test ELBO: -81.55
+Epoch  23 | Train Loss: 79.76 | Test ELBO: -81.18
+Epoch  24 | Train Loss: 79.39 | Test ELBO: -80.83
+Epoch  25 | Train Loss: 79.14 | Test ELBO: -80.21
+Epoch  26 | Train Loss: 78.84 | Test ELBO: -80.27
+Epoch  27 | Train Loss: 78.61 | Test ELBO: -80.11
+Epoch  28 | Train Loss: 78.29 | Test ELBO: -80.22
+Epoch  29 | Train Loss: 78.11 | Test ELBO: -79.84
+Epoch  30 | Train Loss: 77.86 | Test ELBO: -79.16
+Epoch  31 | Train Loss: 77.66 | Test ELBO: -79.59
+Epoch  32 | Train Loss: 77.46 | Test ELBO: -79.45
+Epoch  33 | Train Loss: 77.32 | Test ELBO: -79.42
+Epoch  34 | Train Loss: 77.11 | Test ELBO: -79.17
+Epoch  35 | Train Loss: 76.94 | Test ELBO: -78.93
+Epoch  36 | Train Loss: 76.75 | Test ELBO: -79.01
+Epoch  37 | Train Loss: 76.62 | Test ELBO: -78.73
+Epoch  38 | Train Loss: 76.45 | Test ELBO: -78.60
+Epoch  39 | Train Loss: 76.27 | Test ELBO: -78.47
+Epoch  40 | Train Loss: 76.19 | Test ELBO: -78.35
+Epoch  41 | Train Loss: 76.08 | Test ELBO: -78.34
+Epoch  42 | Train Loss: 75.93 | Test ELBO: -78.68
+Epoch  43 | Train Loss: 75.80 | Test ELBO: -78.08
+Epoch  44 | Train Loss: 75.68 | Test ELBO: -78.09
+Epoch  45 | Train Loss: 75.59 | Test ELBO: -78.19
+Epoch  46 | Train Loss: 75.46 | Test ELBO: -78.02
+Epoch  47 | Train Loss: 75.35 | Test ELBO: -78.25
+Epoch  48 | Train Loss: 75.24 | Test ELBO: -77.91
+Epoch  49 | Train Loss: 75.15 | Test ELBO: -77.74
+Epoch  50 | Train Loss: 75.00 | Test ELBO: -77.63
+
+Training complete. Best test ELBO: -77.63
+Model saved to: models/flow/run_1/vae_flow_final.pt
+
+Done: flow prior, seed=43
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27935129[8]: <vae_train[1-9]> in cluster <dcc> Done
+
+Job <vae_train[1-9]> was submitted from host <hpclogin1> by user <s214374> in cluster <dcc> at Mon Mar  2 13:42:52 2026
+Job was executed on host(s) <4*n-62-11-13>, in queue <gpuv100>, as user <s214374> in cluster <dcc> at Mon Mar  2 13:52:44 2026
+</zhome/02/6/167678> was used as the home directory.
+</zhome/02/6/167678/AdvancedML> was used as the working directory.
+Started at Mon Mar  2 13:52:44 2026
+Terminated at Mon Mar  2 14:05:02 2026
+Results reported at Mon Mar  2 14:05:02 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# train_vae.sh — LSF job array: train VAE with 3 priors × 3 seeds = 9 jobs
+#
+# Each array task trains a single (prior, seed) combination.
+# Task mapping:
+#   1-3  →  gaussian  (seeds 42, 43, 44)
+#   4-6  →  mog       (seeds 42, 43, 44)
+#   7-9  →  flow      (seeds 42, 43, 44)
+#
+# Prerequisites:  bash batch/setup_gpu.sh   (one-time, on login node)
+# Submit:         bsub < batch/train_vae.sh
+# ===========================================================================
+#BSUB -J vae_train[1-9]
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -R "rusage[mem=8GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 02:00
+#BSUB -o logs/vae_%J_%I.out
+#BSUB -e logs/vae_%J_%I.err
+
+set -euo pipefail
+
+# ── Environment ───────────────────────────────────────────────────────
+REPO_DIR="/zhome/02/6/167678/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+module load nccl/2.21.5-1-cuda-12.2.2
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+
+mkdir -p logs models reports/figures
+
+# ── Map array index → (prior, seed) ──────────────────────────────────
+PRIORS=("gaussian" "gaussian" "gaussian" "mog" "mog" "mog" "flow" "flow" "flow")
+SEEDS=(42 43 44 42 43 44 42 43 44)
+
+IDX=$(( ${LSB_JOBINDEX} - 1 ))
+PRIOR="${PRIORS[$IDX]}"
+SEED="${SEEDS[$IDX]}"
+RUN_ID=$(( (IDX % 3) ))
+
+SAVE_DIR="models/${PRIOR}/run_${RUN_ID}"
+
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   736.00 sec.
+    Max Memory :                                 304 MB
+    Average Memory :                             301.33 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               32464.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                8
+    Run time :                                   738 sec.
+    Turnaround time :                            1330 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/vae_27935129_8.err> for stderr output of this job.
+

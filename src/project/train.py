@@ -240,6 +240,7 @@ def train_model(
                 "model_state_dict": model.state_dict(),
                 "optimizer_state_dict": optimizer.state_dict(),
                 "test_elbo": test_elbo,
+                "best_elbo": best_elbo,
                 "config": {
                     "prior_type": prior_type,
                     "latent_dim": latent_dim,
@@ -254,6 +255,7 @@ def train_model(
         "model_state_dict": model.state_dict(),
         "optimizer_state_dict": optimizer.state_dict(),
         "test_elbo": history["test_elbo"][-1],
+        "best_elbo": best_elbo,
         "history": history,
         "config": {
             "prior_type": prior_type,

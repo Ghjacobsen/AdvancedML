@@ -1,0 +1,32 @@
+========================================
+  Job array index : 9
+  Prior           : flow
+  Seed            : 44
+  Run ID          : 2
+  Save dir        : models/flow/run_2
+  Device          : cpu
+========================================
+Training on: cpu
+
+============================================================
+Training VAE with FLOW prior
+Latent dim: 20, Hidden dim: 256
+============================================================
+
+Epoch   1 | Train Loss: 181.53 | Test ELBO: -135.93
+Epoch   2 | Train Loss: 123.86 | Test ELBO: -112.72
+Epoch   3 | Train Loss: 108.56 | Test ELBO: -102.69
+Epoch   4 | Train Loss: 101.21 | Test ELBO: -97.62
+Epoch   5 | Train Loss: 96.78 | Test ELBO: -94.30
+Epoch   6 | Train Loss: 93.69 | Test ELBO: -91.97
+Epoch   7 | Train Loss: 91.28 | Test ELBO: -90.26
+Epoch   8 | Train Loss: 89.38 | Test ELBO: -88.30
+Epoch   9 | Train Loss: 87.89 | Test ELBO: -87.20
+Epoch  10 | Train Loss: 86.59 | Test ELBO: -86.23
+Epoch  11 | Train Loss: 85.55 | Test ELBO: -85.52
+Epoch  12 | Train Loss: 84.62 | Test ELBO: -84.39
+Epoch  13 | Train Loss: 83.77 | Test ELBO: -83.81
+Epoch  14 | Train Loss: 83.12 | Test ELBO: -83.39
+Epoch  15 | Train Loss: 82.52 | Test ELBO: -83.20
+Epoch  16 | Train Loss: 82.01 | Test ELBO: -82.51
+Epoch  17 | Train Loss: 81.44 | Test ELBO: -81.91
