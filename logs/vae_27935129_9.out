@@ -30,3 +30,135 @@ Epoch  14 | Train Loss: 83.12 | Test ELBO: -83.39
 Epoch  15 | Train Loss: 82.52 | Test ELBO: -83.20
 Epoch  16 | Train Loss: 82.01 | Test ELBO: -82.51
 Epoch  17 | Train Loss: 81.44 | Test ELBO: -81.91
+Epoch  18 | Train Loss: 80.94 | Test ELBO: -81.69
+Epoch  19 | Train Loss: 80.52 | Test ELBO: -81.34
+Epoch  20 | Train Loss: 80.18 | Test ELBO: -80.87
+Epoch  21 | Train Loss: 79.81 | Test ELBO: -80.93
+Epoch  22 | Train Loss: 79.52 | Test ELBO: -81.01
+Epoch  23 | Train Loss: 79.20 | Test ELBO: -80.89
+Epoch  24 | Train Loss: 78.88 | Test ELBO: -80.07
+Epoch  25 | Train Loss: 78.63 | Test ELBO: -80.18
+Epoch  26 | Train Loss: 78.41 | Test ELBO: -79.66
+Epoch  27 | Train Loss: 78.16 | Test ELBO: -79.68
+Epoch  28 | Train Loss: 77.92 | Test ELBO: -79.41
+Epoch  29 | Train Loss: 77.78 | Test ELBO: -79.20
+Epoch  30 | Train Loss: 77.54 | Test ELBO: -79.24
+Epoch  31 | Train Loss: 77.33 | Test ELBO: -79.07
+Epoch  32 | Train Loss: 77.28 | Test ELBO: -79.37
+Epoch  33 | Train Loss: 77.02 | Test ELBO: -78.98
+Epoch  34 | Train Loss: 76.83 | Test ELBO: -78.90
+Epoch  35 | Train Loss: 76.70 | Test ELBO: -78.84
+Epoch  36 | Train Loss: 76.57 | Test ELBO: -78.63
+Epoch  37 | Train Loss: 76.40 | Test ELBO: -78.27
+Epoch  38 | Train Loss: 76.26 | Test ELBO: -78.53
+Epoch  39 | Train Loss: 76.12 | Test ELBO: -78.47
+Epoch  40 | Train Loss: 75.94 | Test ELBO: -78.07
+Epoch  41 | Train Loss: 75.82 | Test ELBO: -77.87
+Epoch  42 | Train Loss: 75.72 | Test ELBO: -77.91
+Epoch  43 | Train Loss: 75.59 | Test ELBO: -77.82
+Epoch  44 | Train Loss: 75.44 | Test ELBO: -77.78
+Epoch  45 | Train Loss: 75.32 | Test ELBO: -77.59
+Epoch  46 | Train Loss: 75.21 | Test ELBO: -77.76
+Epoch  47 | Train Loss: 75.12 | Test ELBO: -77.55
+Epoch  48 | Train Loss: 75.00 | Test ELBO: -77.64
+Epoch  49 | Train Loss: 74.91 | Test ELBO: -77.19
+Epoch  50 | Train Loss: 74.84 | Test ELBO: -77.14
+
+Training complete. Best test ELBO: -77.14
+Model saved to: models/flow/run_2/vae_flow_final.pt
+
+Done: flow prior, seed=44
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27935129[9]: <vae_train[1-9]> in cluster <dcc> Done
+
+Job <vae_train[1-9]> was submitted from host <hpclogin1> by user <s214374> in cluster <dcc> at Mon Mar  2 13:42:52 2026
+Job was executed on host(s) <4*n-62-20-4>, in queue <gpuv100>, as user <s214374> in cluster <dcc> at Mon Mar  2 14:02:22 2026
+</zhome/02/6/167678> was used as the home directory.
+</zhome/02/6/167678/AdvancedML> was used as the working directory.
+Started at Mon Mar  2 14:02:22 2026
+Terminated at Mon Mar  2 14:13:52 2026
+Results reported at Mon Mar  2 14:13:52 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# train_vae.sh — LSF job array: train VAE with 3 priors × 3 seeds = 9 jobs
+#
+# Each array task trains a single (prior, seed) combination.
+# Task mapping:
+#   1-3  →  gaussian  (seeds 42, 43, 44)
+#   4-6  →  mog       (seeds 42, 43, 44)
+#   7-9  →  flow      (seeds 42, 43, 44)
+#
+# Prerequisites:  bash batch/setup_gpu.sh   (one-time, on login node)
+# Submit:         bsub < batch/train_vae.sh
+# ===========================================================================
+#BSUB -J vae_train[1-9]
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -R "rusage[mem=8GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 02:00
+#BSUB -o logs/vae_%J_%I.out
+#BSUB -e logs/vae_%J_%I.err
+
+set -euo pipefail
+
+# ── Environment ───────────────────────────────────────────────────────
+REPO_DIR="/zhome/02/6/167678/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+module load nccl/2.21.5-1-cuda-12.2.2
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+
+mkdir -p logs models reports/figures
+
+# ── Map array index → (prior, seed) ──────────────────────────────────
+PRIORS=("gaussian" "gaussian" "gaussian" "mog" "mog" "mog" "flow" "flow" "flow")
+SEEDS=(42 43 44 42 43 44 42 43 44)
+
+IDX=$(( ${LSB_JOBINDEX} - 1 ))
+PRIOR="${PRIORS[$IDX]}"
+SEED="${SEEDS[$IDX]}"
+RUN_ID=$(( (IDX % 3) ))
+
+SAVE_DIR="models/${PRIOR}/run_${RUN_ID}"
+
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   680.00 sec.
+    Max Memory :                                 306 MB
+    Average Memory :                             304.83 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               32462.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                8
+    Run time :                                   690 sec.
+    Turnaround time :                            1860 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/vae_27935129_9.err> for stderr output of this job.
+
