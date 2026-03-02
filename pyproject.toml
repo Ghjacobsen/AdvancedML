@@ -5,12 +5,12 @@ build-backend = "uv_build"
 [project]
 name = "project"
 version = "0.0.1"
-description = "A short description of the project."
+description = "VAE experiments with different priors for DTU course 02460"
 authors = [
   { name = "AdvancedML", email = "your@email.com" },
 ]
 
-keywords = ["machine learning", "MLOps"]
+keywords = ["machine learning", "VAE", "deep generative models", "MNIST"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Programming Language :: Python :: 3",
@@ -19,9 +19,15 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi==0.115.6",
-    "torch==2.6.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
     "typer==0.15.1",
     "uvicorn==0.34.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.10.0",
+    "tqdm>=4.65.0",
 ]
 
 [dependency-groups]
