@@ -24,7 +24,7 @@
 set -euo pipefail
 
 # ── Environment ───────────────────────────────────────────────────────
-REPO_DIR="/zhome/02/6/167678/AdvancedML"
+REPO_DIR="$HOME/AdvancedML"
 cd "$REPO_DIR"
 
 module load python3/3.12.7

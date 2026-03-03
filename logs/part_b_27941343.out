@@ -1,0 +1,98 @@
+========================================
+  Part B: Sampling Quality Experiments
+  Device: 
+========================================
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27941343: <part_b_train> in cluster <dcc> Exited
+
+Job <part_b_train> was submitted from host <hpclogin1> by user <s214422> in cluster <dcc> at Tue Mar  3 15:08:50 2026
+Job was executed on host(s) <4*n-62-20-4>, in queue <gpuv100>, as user <s214422> in cluster <dcc> at Tue Mar  3 15:08:52 2026
+</zhome/c3/1/167609> was used as the home directory.
+</zhome/c3/1/167609/AdvancedML> was used as the working directory.
+Started at Tue Mar  3 15:08:52 2026
+Terminated at Tue Mar  3 15:08:54 2026
+Results reported at Tue Mar  3 15:08:54 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# train_part_b.sh — LSF single job: Part B sampling quality experiments
+#
+# Trains (sequentially in one GPU job):
+#   1. Image-space DDPM (U-Net, T=1000, 100 epochs) on standard MNIST
+#   2. Gaussian VAE  (latent_dim=20, 50 epochs) on standard MNIST
+#   3. Latent DDPM   (MLP, T=1000, 100 epochs) on VAE latent codes
+#   4. Evaluation: FID scores, FID vs T, sampling times, all plots
+#
+# Prerequisites:  bash batch/setup_gpu.sh   (one-time, on login node)
+# Submit:         bsub < batch/train_part_b.sh
+# ===========================================================================
+#BSUB -J part_b_train
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -R "rusage[mem=16GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 04:00
+#BSUB -o logs/part_b_%J.out
+#BSUB -e logs/part_b_%J.err
+
+set -euo pipefail
+
+# ── Environment ────────────────────────────────────────────────────────
+REPO_DIR="$HOME/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+module load nccl/2.21.5-1-cuda-12.2.2
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+
+mkdir -p logs models reports/figures
+
+echo "========================================"
+echo "  Part B: Sampling Quality Experiments"
+echo "  Device: $(python -c 'import torch; print("cuda" if torch.cuda.is_available() else "cpu")')"
+echo "========================================"
+
+# ── Run full Part B pipeline ───────────────────────────────────────────
+python src/project/run_part_b.py \
+    --ddpm-epochs 100 \
+    --vae-epochs 50 \
+    --latent-ddpm-epochs 100 \
+    --latent-dim 20 \
+
+(... more ...)
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.70 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   38 sec.
+    Turnaround time :                            4 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/part_b_27941343.err> for stderr output of this job.
+

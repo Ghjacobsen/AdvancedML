@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-03-03T16:25:06.988460",
+  "config": {
+    "ddpm_epochs": 100,
+    "vae_epochs": 50,
+    "latent_ddpm_epochs": 100,
+    "latent_dim": 20,
+    "T": 1000,
+    "n_fid_samples": 5000,
+    "part_a_prior": "mog"
+  },
+  "fid": {
+    "ddpm": 7.838632677784592,
+    "latent_ddpm": 83.182336363672,
+    "part_a_vae": 18.40244217376125
+  },
+  "fid_vs_T": {
+    "0": 80.79022014308033,
+    "10": 90.01902606458773,
+    "50": 84.66235243982365,
+    "200": 83.5036511166233,
+    "1000": 83.80475451494897
+  },
+  "sampling_speed": {
+    "ddpm_samples_per_sec": 8.489216241113187,
+    "latent_ddpm_samples_per_sec": 398.60512320857106,
+    "part_a_vae_samples_per_sec": 392840.6415083143
+  }
+}

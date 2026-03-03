@@ -1,0 +1,468 @@
+========================================
+  Part B: Sampling Quality Experiments
+  Device: cuda
+========================================
+======================================================================
+PART B: SAMPLING QUALITY OF GENERATIVE MODELS
+======================================================================
+Device: cuda
+FID samples: 5000
+======================================================================
+
+[1/3] Training image-space DDPM...
+Training DDPM on: cuda
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Failed to download (trying next):
+HTTP Error 404: Not Found
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz to ./data/MNIST/raw/train-images-idx3-ubyte.gz
+Extracting ./data/MNIST/raw/train-images-idx3-ubyte.gz to ./data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Failed to download (trying next):
+HTTP Error 404: Not Found
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz to ./data/MNIST/raw/train-labels-idx1-ubyte.gz
+Extracting ./data/MNIST/raw/train-labels-idx1-ubyte.gz to ./data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Failed to download (trying next):
+HTTP Error 404: Not Found
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw/t10k-images-idx3-ubyte.gz
+Extracting ./data/MNIST/raw/t10k-images-idx3-ubyte.gz to ./data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Failed to download (trying next):
+HTTP Error 404: Not Found
+
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz
+Downloading https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+Extracting ./data/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./data/MNIST/raw
+
+
+============================================================
+Training DDPM  |  T=1000  |  C=64  |  epochs=100
+============================================================
+
+Epoch   1 | Loss: 0.0657
+Epoch   2 | Loss: 0.0323
+Epoch   3 | Loss: 0.0289
+Epoch   4 | Loss: 0.0269
+Epoch   5 | Loss: 0.0262
+Epoch   6 | Loss: 0.0257
+Epoch   7 | Loss: 0.0250
+Epoch   8 | Loss: 0.0249
+Epoch   9 | Loss: 0.0239
+Epoch  10 | Loss: 0.0238
+Epoch  11 | Loss: 0.0238
+Epoch  12 | Loss: 0.0237
+Epoch  13 | Loss: 0.0236
+Epoch  14 | Loss: 0.0233
+Epoch  15 | Loss: 0.0232
+Epoch  16 | Loss: 0.0228
+Epoch  17 | Loss: 0.0230
+Epoch  18 | Loss: 0.0230
+Epoch  19 | Loss: 0.0224
+Epoch  20 | Loss: 0.0226
+Epoch  21 | Loss: 0.0224
+Epoch  22 | Loss: 0.0224
+Epoch  23 | Loss: 0.0223
+Epoch  24 | Loss: 0.0224
+Epoch  25 | Loss: 0.0223
+Epoch  26 | Loss: 0.0222
+Epoch  27 | Loss: 0.0220
+Epoch  28 | Loss: 0.0223
+Epoch  29 | Loss: 0.0222
+Epoch  30 | Loss: 0.0219
+Epoch  31 | Loss: 0.0219
+Epoch  32 | Loss: 0.0219
+Epoch  33 | Loss: 0.0218
+Epoch  34 | Loss: 0.0220
+Epoch  35 | Loss: 0.0218
+Epoch  36 | Loss: 0.0216
+Epoch  37 | Loss: 0.0218
+Epoch  38 | Loss: 0.0220
+Epoch  39 | Loss: 0.0217
+Epoch  40 | Loss: 0.0218
+Epoch  41 | Loss: 0.0215
+Epoch  42 | Loss: 0.0218
+Epoch  43 | Loss: 0.0215
+Epoch  44 | Loss: 0.0216
+Epoch  45 | Loss: 0.0214
+Epoch  46 | Loss: 0.0215
+Epoch  47 | Loss: 0.0213
+Epoch  48 | Loss: 0.0215
+Epoch  49 | Loss: 0.0215
+Epoch  50 | Loss: 0.0215
+Epoch  51 | Loss: 0.0215
+Epoch  52 | Loss: 0.0214
+Epoch  53 | Loss: 0.0214
+Epoch  54 | Loss: 0.0213
+Epoch  55 | Loss: 0.0214
+Epoch  56 | Loss: 0.0214
+Epoch  57 | Loss: 0.0214
+Epoch  58 | Loss: 0.0214
+Epoch  59 | Loss: 0.0213
+Epoch  60 | Loss: 0.0214
+Epoch  61 | Loss: 0.0212
+Epoch  62 | Loss: 0.0212
+Epoch  63 | Loss: 0.0215
+Epoch  64 | Loss: 0.0211
+Epoch  65 | Loss: 0.0211
+Epoch  66 | Loss: 0.0212
+Epoch  67 | Loss: 0.0210
+Epoch  68 | Loss: 0.0209
+Epoch  69 | Loss: 0.0212
+Epoch  70 | Loss: 0.0211
+Epoch  71 | Loss: 0.0212
+Epoch  72 | Loss: 0.0210
+Epoch  73 | Loss: 0.0211
+Epoch  74 | Loss: 0.0211
+Epoch  75 | Loss: 0.0209
+Epoch  76 | Loss: 0.0211
+Epoch  77 | Loss: 0.0207
+Epoch  78 | Loss: 0.0211
+Epoch  79 | Loss: 0.0210
+Epoch  80 | Loss: 0.0210
+Epoch  81 | Loss: 0.0211
+Epoch  82 | Loss: 0.0212
+Epoch  83 | Loss: 0.0208
+Epoch  84 | Loss: 0.0210
+Epoch  85 | Loss: 0.0209
+Epoch  86 | Loss: 0.0208
+Epoch  87 | Loss: 0.0209
+Epoch  88 | Loss: 0.0209
+Epoch  89 | Loss: 0.0208
+Epoch  90 | Loss: 0.0209
+Epoch  91 | Loss: 0.0206
+Epoch  92 | Loss: 0.0210
+Epoch  93 | Loss: 0.0208
+Epoch  94 | Loss: 0.0208
+Epoch  95 | Loss: 0.0208
+Epoch  96 | Loss: 0.0209
+Epoch  97 | Loss: 0.0206
+Epoch  98 | Loss: 0.0209
+Epoch  99 | Loss: 0.0211
+Epoch 100 | Loss: 0.0208
+
+DDPM training complete. Best loss: 0.0206
+
+[2/3] Training Gaussian VAE...
+Training Gaussian VAE on: cuda
+
+============================================================
+Training Gaussian VAE | latent_dim=20 | epochs=50
+============================================================
+
+Epoch   1 | Loss: 102.99 | Test ELBO: -84.94
+Epoch   2 | Loss: 75.08 | Test ELBO: -67.53
+Epoch   3 | Loss: 64.33 | Test ELBO: -61.44
+Epoch   4 | Loss: 59.93 | Test ELBO: -58.24
+Epoch   5 | Loss: 57.49 | Test ELBO: -56.17
+Epoch   6 | Loss: 55.83 | Test ELBO: -54.66
+Epoch   7 | Loss: 54.61 | Test ELBO: -54.01
+Epoch   8 | Loss: 53.79 | Test ELBO: -52.92
+Epoch   9 | Loss: 53.15 | Test ELBO: -52.32
+Epoch  10 | Loss: 52.52 | Test ELBO: -51.92
+Epoch  11 | Loss: 52.06 | Test ELBO: -51.58
+Epoch  12 | Loss: 51.67 | Test ELBO: -51.41
+Epoch  13 | Loss: 51.29 | Test ELBO: -50.80
+Epoch  14 | Loss: 50.94 | Test ELBO: -50.69
+Epoch  15 | Loss: 50.60 | Test ELBO: -50.06
+Epoch  16 | Loss: 50.34 | Test ELBO: -49.82
+Epoch  17 | Loss: 50.09 | Test ELBO: -49.68
+Epoch  18 | Loss: 49.88 | Test ELBO: -49.70
+Epoch  19 | Loss: 49.69 | Test ELBO: -49.72
+Epoch  20 | Loss: 49.56 | Test ELBO: -49.15
+Epoch  21 | Loss: 49.33 | Test ELBO: -48.98
+Epoch  22 | Loss: 49.19 | Test ELBO: -48.96
+Epoch  23 | Loss: 49.02 | Test ELBO: -48.65
+Epoch  24 | Loss: 48.88 | Test ELBO: -48.53
+Epoch  25 | Loss: 48.77 | Test ELBO: -48.59
+Epoch  26 | Loss: 48.58 | Test ELBO: -48.16
+Epoch  27 | Loss: 48.44 | Test ELBO: -48.11
+Epoch  28 | Loss: 48.31 | Test ELBO: -48.10
+Epoch  29 | Loss: 48.19 | Test ELBO: -48.13
+Epoch  30 | Loss: 48.10 | Test ELBO: -47.82
+Epoch  31 | Loss: 47.99 | Test ELBO: -47.85
+Epoch  32 | Loss: 47.91 | Test ELBO: -47.57
+Epoch  33 | Loss: 47.83 | Test ELBO: -47.66
+Epoch  34 | Loss: 47.70 | Test ELBO: -47.52
+Epoch  35 | Loss: 47.63 | Test ELBO: -47.50
+Epoch  36 | Loss: 47.56 | Test ELBO: -47.22
+Epoch  37 | Loss: 47.47 | Test ELBO: -47.38
+Epoch  38 | Loss: 47.42 | Test ELBO: -47.23
+Epoch  39 | Loss: 47.30 | Test ELBO: -47.52
+Epoch  40 | Loss: 47.28 | Test ELBO: -47.04
+Epoch  41 | Loss: 47.15 | Test ELBO: -47.04
+Epoch  42 | Loss: 47.12 | Test ELBO: -47.07
+Epoch  43 | Loss: 47.05 | Test ELBO: -47.14
+Epoch  44 | Loss: 46.97 | Test ELBO: -46.77
+Epoch  45 | Loss: 46.92 | Test ELBO: -46.99
+Epoch  46 | Loss: 46.83 | Test ELBO: -46.61
+Epoch  47 | Loss: 46.84 | Test ELBO: -46.62
+Epoch  48 | Loss: 46.73 | Test ELBO: -46.72
+Epoch  49 | Loss: 46.67 | Test ELBO: -46.59
+Epoch  50 | Loss: 46.66 | Test ELBO: -46.46
+
+Gaussian VAE training complete. Best test ELBO: -46.46
+      Training Latent DDPM...
+Training Latent DDPM on: cuda
+
+============================================================
+Training Latent DDPM | T=1000 | latent_dim=20 | epochs=100
+============================================================
+
+Epoch   1 | Loss: 0.4384
+Epoch   2 | Loss: 0.2072
+Epoch   3 | Loss: 0.2069
+Epoch   4 | Loss: 0.2036
+Epoch   5 | Loss: 0.2028
+Epoch   6 | Loss: 0.1948
+Epoch   7 | Loss: 0.1781
+Epoch   8 | Loss: 0.1663
+Epoch   9 | Loss: 0.1619
+Epoch  10 | Loss: 0.1557
+Epoch  11 | Loss: 0.1506
+Epoch  12 | Loss: 0.1496
+Epoch  13 | Loss: 0.1508
+Epoch  14 | Loss: 0.1473
+Epoch  15 | Loss: 0.1466
+Epoch  16 | Loss: 0.1452
+Epoch  17 | Loss: 0.1436
+Epoch  18 | Loss: 0.1451
+Epoch  19 | Loss: 0.1422
+Epoch  20 | Loss: 0.1431
+Epoch  21 | Loss: 0.1422
+Epoch  22 | Loss: 0.1428
+Epoch  23 | Loss: 0.1414
+Epoch  24 | Loss: 0.1412
+Epoch  25 | Loss: 0.1425
+Epoch  26 | Loss: 0.1402
+Epoch  27 | Loss: 0.1400
+Epoch  28 | Loss: 0.1394
+Epoch  29 | Loss: 0.1384
+Epoch  30 | Loss: 0.1395
+Epoch  31 | Loss: 0.1389
+Epoch  32 | Loss: 0.1394
+Epoch  33 | Loss: 0.1399
+Epoch  34 | Loss: 0.1378
+Epoch  35 | Loss: 0.1403
+Epoch  36 | Loss: 0.1391
+Epoch  37 | Loss: 0.1391
+Epoch  38 | Loss: 0.1387
+Epoch  39 | Loss: 0.1386
+Epoch  40 | Loss: 0.1383
+Epoch  41 | Loss: 0.1380
+Epoch  42 | Loss: 0.1372
+Epoch  43 | Loss: 0.1383
+Epoch  44 | Loss: 0.1388
+Epoch  45 | Loss: 0.1377
+Epoch  46 | Loss: 0.1373
+Epoch  47 | Loss: 0.1377
+Epoch  48 | Loss: 0.1375
+Epoch  49 | Loss: 0.1368
+Epoch  50 | Loss: 0.1360
+Epoch  51 | Loss: 0.1372
+Epoch  52 | Loss: 0.1379
+Epoch  53 | Loss: 0.1359
+Epoch  54 | Loss: 0.1375
+Epoch  55 | Loss: 0.1365
+Epoch  56 | Loss: 0.1349
+Epoch  57 | Loss: 0.1382
+Epoch  58 | Loss: 0.1358
+Epoch  59 | Loss: 0.1361
+Epoch  60 | Loss: 0.1365
+Epoch  61 | Loss: 0.1367
+Epoch  62 | Loss: 0.1376
+Epoch  63 | Loss: 0.1359
+Epoch  64 | Loss: 0.1372
+Epoch  65 | Loss: 0.1367
+Epoch  66 | Loss: 0.1366
+Epoch  67 | Loss: 0.1365
+Epoch  68 | Loss: 0.1361
+Epoch  69 | Loss: 0.1369
+Epoch  70 | Loss: 0.1345
+Epoch  71 | Loss: 0.1369
+Epoch  72 | Loss: 0.1350
+Epoch  73 | Loss: 0.1360
+Epoch  74 | Loss: 0.1355
+Epoch  75 | Loss: 0.1348
+Epoch  76 | Loss: 0.1356
+Epoch  77 | Loss: 0.1336
+Epoch  78 | Loss: 0.1351
+Epoch  79 | Loss: 0.1347
+Epoch  80 | Loss: 0.1353
+Epoch  81 | Loss: 0.1335
+Epoch  82 | Loss: 0.1353
+Epoch  83 | Loss: 0.1359
+Epoch  84 | Loss: 0.1349
+Epoch  85 | Loss: 0.1356
+Epoch  86 | Loss: 0.1357
+Epoch  87 | Loss: 0.1340
+Epoch  88 | Loss: 0.1341
+Epoch  89 | Loss: 0.1346
+Epoch  90 | Loss: 0.1336
+Epoch  91 | Loss: 0.1343
+Epoch  92 | Loss: 0.1342
+Epoch  93 | Loss: 0.1345
+Epoch  94 | Loss: 0.1344
+Epoch  95 | Loss: 0.1359
+Epoch  96 | Loss: 0.1344
+Epoch  97 | Loss: 0.1336
+Epoch  98 | Loss: 0.1331
+Epoch  99 | Loss: 0.1353
+Epoch 100 | Loss: 0.1341
+
+Latent DDPM training complete. Best loss: 0.1331
+
+[3/3] Loading Part A VAE (mog prior)...
+      Loaded: models/mog/run_0/vae_mog_best.pt
+
+Loading 5000 real images for FID...
+Real images shape: torch.Size([5000, 1, 28, 28])
+
+Generating samples...
+Saved: reports/figures/ddpm_samples.png
+Saved: reports/figures/latent_ddpm_samples.png
+Saved: reports/figures/part_a_mog_samples_b.png
+
+Computing FID scores (classifier: models/mnist_classifier.pth)...
+FID — DDPM:        7.84
+FID — Latent DDPM: 83.18
+FID — Part A VAE:  18.40
+
+Latent DDPM FID vs sampling steps T:
+  T=0 (prior only)          FID: 80.79
+  T=10                      FID: 90.02
+  T=50                      FID: 84.66
+  T=200                     FID: 83.50
+  T=1000                    FID: 83.80
+Saved: reports/figures/latent_ddpm_fid_vs_T.png
+
+Measuring sampling times (samples/second)...
+  DDPM:        8.49 samples/s
+  Latent DDPM: 398.61 samples/s
+  Part A VAE:  392840.64 samples/s
+
+Generating latent distribution comparison plot...
+Saved: reports/figures/latent_distribution_comparison.png
+
+======================================================================
+PART B — RESULTS SUMMARY
+======================================================================
+Model                            FID    Speed (samples/s)
+---------------------------------------------------------
+DDPM                            7.84                 8.49
+Latent DDPM                    83.18               398.61
+Part A VAE (mog)               18.40            392840.64
+======================================================================
+
+Latent DDPM FID vs T:
+  T=0       FID: 80.79
+  T=10      FID: 90.02
+  T=50      FID: 84.66
+  T=200     FID: 83.50
+  T=1000    FID: 83.80
+
+Results saved to: reports/part_b_results.json
+
+Part B complete. Results in reports/part_b_results.json
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27941454: <part_b_train> in cluster <dcc> Done
+
+Job <part_b_train> was submitted from host <hpclogin1> by user <s214422> in cluster <dcc> at Tue Mar  3 15:17:54 2026
+Job was executed on host(s) <4*n-62-11-15>, in queue <gpuv100>, as user <s214422> in cluster <dcc> at Tue Mar  3 15:19:29 2026
+</zhome/c3/1/167609> was used as the home directory.
+</zhome/c3/1/167609/AdvancedML> was used as the working directory.
+Started at Tue Mar  3 15:19:29 2026
+Terminated at Tue Mar  3 16:25:08 2026
+Results reported at Tue Mar  3 16:25:08 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# train_part_b.sh — LSF single job: Part B sampling quality experiments
+#
+# Trains (sequentially in one GPU job):
+#   1. Image-space DDPM (U-Net, T=1000, 100 epochs) on standard MNIST
+#   2. Gaussian VAE  (latent_dim=20, 50 epochs) on standard MNIST
+#   3. Latent DDPM   (MLP, T=1000, 100 epochs) on VAE latent codes
+#   4. Evaluation: FID scores, FID vs T, sampling times, all plots
+#
+# Prerequisites:  bash batch/setup_gpu.sh   (one-time, on login node)
+# Submit:         bsub < batch/train_part_b.sh
+# ===========================================================================
+#BSUB -J part_b_train
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -R "rusage[mem=16GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 04:00
+#BSUB -o logs/part_b_%J.out
+#BSUB -e logs/part_b_%J.err
+
+set -euo pipefail
+
+# ── Environment ────────────────────────────────────────────────────────
+REPO_DIR="$HOME/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+module load nccl/2.21.5-1-cuda-12.2.2
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+
+mkdir -p logs models reports/figures
+
+echo "========================================"
+echo "  Part B: Sampling Quality Experiments"
+echo "  Device: $(python -c 'import torch; print("cuda" if torch.cuda.is_available() else "cpu")')"
+echo "========================================"
+
+# ── Run full Part B pipeline ───────────────────────────────────────────
+python src/project/run_part_b.py \
+    --ddpm-epochs 100 \
+    --vae-epochs 50 \
+    --latent-ddpm-epochs 100 \
+    --latent-dim 20 \
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   4175.00 sec.
+    Max Memory :                                 1094 MB
+    Average Memory :                             973.74 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               64442.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                11
+    Run time :                                   3939 sec.
+    Turnaround time :                            4034 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/part_b_27941454.err> for stderr output of this job.
+

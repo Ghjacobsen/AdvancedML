@@ -11,7 +11,7 @@
 
 set -euo pipefail
 
-REPO_DIR="/zhome/02/6/167678/AdvancedML"
+REPO_DIR="$HOME/AdvancedML"
 cd "$REPO_DIR"
 
 echo "========================================"

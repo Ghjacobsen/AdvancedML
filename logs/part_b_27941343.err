@@ -1,0 +1,16 @@
+Loaded dependency [python3/3.12.7]: sqlite3/3.46.1
+Loaded dependency [python3/3.12.7]: gcc/12.4.0-binutils-2.42
+Loaded module: python3/3.12.7
+
+Loading python3/3.12.7
+  Loading requirement: sqlite3/3.46.1 gcc/12.4.0-binutils-2.42
+Loaded module: cuda/12.2.2
+Loaded module: cudnn/v9.1.1.17-prod-cuda-12.X
+Loaded module: nccl/2.21.5-1-cuda-12.2.2
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+Traceback (most recent call last):
+  File "/zhome/c3/1/167609/AdvancedML/src/project/run_part_b.py", line 30, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
