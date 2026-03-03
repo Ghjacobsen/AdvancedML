@@ -117,6 +117,56 @@ def get_full_test_loader(
     )
 
 
+def get_standard_mnist_loaders(
+    batch_size: int = 128,
+    data_dir: str = "./data",
+    num_workers: int = 0,
+    pin_memory: bool = True,
+    squeeze_channel: bool = True,
+) -> Tuple[DataLoader, DataLoader]:
+    """
+    Get train and test DataLoaders for standard (non-binarized) MNIST, normalized to [-1, 1].
+
+    Parameters:
+    batch_size: [int] Batch size.
+    data_dir: [str] Directory to download/load MNIST data.
+    num_workers: [int] Number of workers for data loading.
+    pin_memory: [bool] Pin memory for faster GPU transfer.
+    squeeze_channel: [bool] If True, squeeze channel dim → (28, 28); if False keep (1, 28, 28).
+
+    Returns:
+    train_loader: [DataLoader] Training data loader.
+    test_loader: [DataLoader] Test data loader.
+    """
+    transform_list = [
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,), (0.5,)),
+    ]
+    if squeeze_channel:
+        transform_list.append(transforms.Lambda(lambda x: x.squeeze(0)))
+    transform = transforms.Compose(transform_list)
+
+    train_dataset = datasets.MNIST(root=data_dir, train=True, download=True, transform=transform)
+    test_dataset = datasets.MNIST(root=data_dir, train=False, download=True, transform=transform)
+
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=num_workers,
+        pin_memory=pin_memory,
+        drop_last=True,
+    )
+    test_loader = DataLoader(
+        test_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=num_workers,
+        pin_memory=pin_memory,
+    )
+    return train_loader, test_loader
+
+
 if __name__ == "__main__":
     # Quick test
     train_loader, test_loader = get_mnist_loaders(batch_size=64)

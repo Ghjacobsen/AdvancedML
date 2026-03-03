@@ -47,6 +47,36 @@ def evaluate_vae(ctx: Context, checkpoint: str = None, prior: str = None) -> Non
         )
 
 # =============================================================================
+# Part B: Sampling Quality Experiments
+# =============================================================================
+
+@task
+def run_part_b(ctx: Context, quick: bool = False, skip_training: bool = False,
+               part_a_prior: str = "mog", ddpm_epochs: int = 100,
+               vae_epochs: int = 50, latent_ddpm_epochs: int = 100) -> None:
+    """Run Part B experiments: DDPM, Latent DDPM, FID, sampling times."""
+    quick_flag = "--quick" if quick else ""
+    skip_flag = "--skip-training" if skip_training else ""
+    ctx.run(
+        f"uv run python src/{PROJECT_NAME}/run_part_b.py "
+        f"{quick_flag} {skip_flag} "
+        f"--part-a-prior {part_a_prior} "
+        f"--ddpm-epochs {ddpm_epochs} "
+        f"--vae-epochs {vae_epochs} "
+        f"--latent-ddpm-epochs {latent_ddpm_epochs}",
+        echo=True, pty=not WINDOWS
+    )
+
+@task
+def train_ddpm(ctx: Context, epochs: int = 100, base_channels: int = 64, T: int = 1000) -> None:
+    """Train image-space DDPM on standard MNIST."""
+    ctx.run(
+        f"uv run python src/{PROJECT_NAME}/ddpm.py "
+        f"--epochs {epochs} --base-channels {base_channels} --T {T}",
+        echo=True, pty=not WINDOWS
+    )
+
+# =============================================================================
 # Data
 # =============================================================================
 
