@@ -135,6 +135,34 @@ def save_sample_grid(
     print(f"Saved: {save_path}")
 
 
+def plot_fid_vs_beta(
+    fid_by_beta: Dict[float, float],
+    save_path: str,
+):
+    """
+    Plot FID score vs β (KL weight) for the Latent DDPM.
+
+    Args:
+        fid_by_beta: Mapping from beta value to FID score.
+        save_path: Output file path.
+    """
+    betas = sorted(fid_by_beta.keys())
+    fids = [fid_by_beta[b] for b in betas]
+
+    fig, ax = plt.subplots(figsize=(7, 4))
+    ax.semilogx(betas, fids, "o-", color="darkorange", linewidth=2, markersize=8)
+    for b, f in zip(betas, fids):
+        ax.annotate(f"  β={b:.0e}\n  FID={f:.1f}", xy=(b, f), fontsize=8)
+    ax.set_xlabel("β (KL weight in β-VAE)", fontsize=12)
+    ax.set_ylabel("FID", fontsize=12)
+    ax.set_title("Latent DDPM: FID vs β (β-VAE KL weight)", fontsize=13)
+    ax.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    plt.close()
+    print(f"Saved: {save_path}")
+
+
 def plot_fid_vs_T(
     fid_by_steps: Dict[int, float],
     save_path: str,
@@ -472,6 +500,62 @@ def run_part_b_experiments(
     plot_fid_vs_T(fid_by_steps, str(figures_dir / "latent_ddpm_fid_vs_T.png"))
 
     # ------------------------------------------------------------------
+    # β-VAE sweep: FID vs β for Latent DDPM
+    # ------------------------------------------------------------------
+    beta_values = [1e-6, 1e-4, 1e-2, 1.0]
+    fid_by_beta: Dict[float, float] = {}
+
+    print("\nβ-VAE sweep: training β-VAEs and Latent DDPMs for each β...")
+    for beta in beta_values:
+        beta_str = f"{beta:.0e}"
+        beta_vae_dir = str(Path(models_dir) / "beta_sweep" / f"b{beta_str}" / "gaussian_vae")
+        beta_latent_dir = str(Path(models_dir) / "beta_sweep" / f"b{beta_str}" / "latent_ddpm")
+        beta_vae_ckpt = Path(beta_vae_dir) / "gaussian_vae_best.pt"
+        beta_latent_ckpt = Path(beta_latent_dir) / "latent_ddpm_best.pt"
+
+        print(f"\n  [β={beta:.0e}] Training β-VAE...")
+        if skip_training and beta_vae_ckpt.exists():
+            beta_vae = load_gaussian_vae(str(beta_vae_ckpt), device)
+        else:
+            beta_vae, _ = train_gaussian_vae(
+                epochs=vae_epochs,
+                batch_size=batch_size,
+                latent_dim=latent_dim,
+                hidden_dim=hidden_dim,
+                beta=beta,
+                save_dir=beta_vae_dir,
+                data_dir=data_dir,
+                device=device,
+            )
+
+        print(f"  [β={beta:.0e}] Training Latent DDPM...")
+        if skip_training and beta_latent_ckpt.exists():
+            beta_latent_ddpm = load_latent_ddpm(str(beta_latent_ckpt), device)
+        else:
+            beta_latent_ddpm, _ = train_latent_ddpm(
+                vae=beta_vae,
+                latent_dim=latent_dim,
+                epochs=latent_ddpm_epochs,
+                batch_size=batch_size * 2,
+                T=T,
+                save_dir=beta_latent_dir,
+                data_dir=data_dir,
+                device=device,
+            )
+
+        with torch.no_grad():
+            z = beta_latent_ddpm.sample(n_fid_samples, device)
+            imgs = beta_vae.decode(z).unsqueeze(1).clamp(-1.0, 1.0)
+        fid_val = compute_fid(x_real, imgs, device=str(device), classifier_ckpt=classifier_ckpt)
+        fid_by_beta[beta] = float(fid_val)
+        print(f"  [β={beta:.0e}] FID = {fid_val:.2f}")
+
+    print("\nβ-VAE sweep FID results:")
+    for beta, fid_val in sorted(fid_by_beta.items()):
+        print(f"  β={beta:.0e}   FID: {fid_val:.2f}")
+    plot_fid_vs_beta(fid_by_beta, str(figures_dir / "latent_ddpm_fid_vs_beta.png"))
+
+    # ------------------------------------------------------------------
     # Sampling times
     # ------------------------------------------------------------------
     print("\nMeasuring sampling times (samples/second)...")
@@ -528,6 +612,10 @@ def run_part_b_experiments(
     for n_steps, fid_val in sorted(fid_by_steps.items()):
         print(f"  T={n_steps:<6}  FID: {fid_val:.2f}")
 
+    print("\nLatent DDPM FID vs β:")
+    for beta, fid_val in sorted(fid_by_beta.items()):
+        print(f"  β={beta:.0e}   FID: {fid_val:.2f}")
+
     # ------------------------------------------------------------------
     # Save results JSON
     # ------------------------------------------------------------------
@@ -548,6 +636,7 @@ def run_part_b_experiments(
             "part_a_vae": float(fid_part_a) if fid_part_a is not None else None,
         },
         "fid_vs_T": {str(k): v for k, v in fid_by_steps.items()},
+        "fid_vs_beta": {str(k): v for k, v in fid_by_beta.items()},
         "sampling_speed": {
             "ddpm_samples_per_sec": ddpm_speed,
             "latent_ddpm_samples_per_sec": latent_speed,

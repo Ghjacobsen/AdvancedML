@@ -43,6 +43,8 @@ echo "  Device: $(python -c 'import torch; print("cuda" if torch.cuda.is_availab
 echo "========================================"
 
 # ── Run full Part B pipeline ───────────────────────────────────────────
+# --skip-training reuses existing DDPM/VAE/LatentDDPM checkpoints;
+# the β sweep always trains fresh models per β in models/beta_sweep/.
 python src/project/run_part_b.py \
     --ddpm-epochs 100 \
     --vae-epochs 50 \
@@ -56,7 +58,8 @@ python src/project/run_part_b.py \
     --part-a-prior mog \
     --output-dir "./reports" \
     --models-dir "./models" \
-    --data-dir "./data"
+    --data-dir "./data" \
+    --skip-training
 
 echo ""
 echo "Part B complete. Results in reports/part_b_results.json"

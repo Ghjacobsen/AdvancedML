@@ -63,8 +63,9 @@ class GaussianVAE(nn.Module):
     Variational Autoencoder with Gaussian encoder and Gaussian decoder.
 
     Trained on standard (non-binarised) MNIST normalised to [-1, 1].
-    ELBO = E_q[log p(x|z)] − KL(q(z|x) || N(0,I))
-         = −½ ||x − μ_dec(z)||² − KL   (with fixed decoder σ=1).
+    β-VAE ELBO = E_q[log p(x|z)] − β · KL(q(z|x) || N(0,I))
+               = −½ ||x − μ_dec(z)||² − β · KL   (with fixed decoder σ=1).
+    β=1 recovers the standard VAE.
     """
 
     def __init__(
@@ -72,17 +73,20 @@ class GaussianVAE(nn.Module):
         encoder: GaussianEncoder,
         decoder: GaussianDecoder,
         latent_dim: int,
+        beta: float = 1.0,
     ):
         """
         Args:
             encoder: Gaussian encoder producing q(z|x).
             decoder: Gaussian decoder producing image means.
             latent_dim: Dimension of the latent space.
+            beta: KL weight for β-VAE (1.0 = standard VAE).
         """
         super().__init__()
         self.encoder = encoder
         self.decoder = decoder
         self.latent_dim = latent_dim
+        self.beta = beta
 
     def encode_mean(self, x: torch.Tensor) -> torch.Tensor:
         """
@@ -112,9 +116,9 @@ class GaussianVAE(nn.Module):
 
     def elbo(self, x: torch.Tensor) -> torch.Tensor:
         """
-        Compute the ELBO for a batch of images.
+        Compute the β-VAE ELBO for a batch of images.
 
-        ELBO = −½ · Σ_pixels (x − μ_dec)² / B − KL(q || p)
+        ELBO = −½ · Σ_pixels (x − μ_dec)² / B − β · KL(q || p)
 
         Args:
             x: Images, shape (B, 28, 28), in [-1, 1].
@@ -137,7 +141,7 @@ class GaussianVAE(nn.Module):
         # Analytical KL: KL(N(μ,σ²) || N(0,1)) = ½(μ²+σ²−2logσ−1)
         kl = 0.5 * (mean ** 2 + std ** 2 - 2.0 * log_std - 1.0).sum(dim=1).mean()
 
-        return -(recon_loss + kl)
+        return -(recon_loss + self.beta * kl)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return -self.elbo(x)
@@ -359,13 +363,14 @@ def train_gaussian_vae(
     lr: float = 1e-3,
     latent_dim: int = 20,
     hidden_dim: int = 256,
+    beta: float = 1.0,
     seed: Optional[int] = None,
     save_dir: str = "./models/gaussian_vae",
     data_dir: str = "./data",
     device: Optional[torch.device] = None,
 ) -> Tuple[GaussianVAE, Dict]:
     """
-    Train a Gaussian VAE on standard MNIST.
+    Train a β-VAE on standard MNIST.
 
     Args:
         epochs: Training epochs.
@@ -373,6 +378,7 @@ def train_gaussian_vae(
         lr: Adam learning rate.
         latent_dim: Dimension of the latent space.
         hidden_dim: Hidden layer width for encoder/decoder MLPs.
+        beta: KL weight for β-VAE (1.0 = standard VAE).
         seed: Optional random seed.
         save_dir: Checkpoint directory.
         data_dir: MNIST data directory.
@@ -398,14 +404,14 @@ def train_gaussian_vae(
     decoder_net = create_decoder_net(latent_dim, hidden_dim)
     encoder = GaussianEncoder(encoder_net)
     decoder = GaussianDecoder(decoder_net)
-    model = GaussianVAE(encoder, decoder, latent_dim).to(device)
+    model = GaussianVAE(encoder, decoder, latent_dim, beta=beta).to(device)
     optimizer = Adam(model.parameters(), lr=lr)
 
     history: Dict = {"train_loss": [], "test_elbo": []}
     best_elbo = float("-inf")
 
     print(f"\n{'='*60}")
-    print(f"Training Gaussian VAE | latent_dim={latent_dim} | epochs={epochs}")
+    print(f"Training β-VAE | β={beta:.2e} | latent_dim={latent_dim} | epochs={epochs}")
     print(f"{'='*60}\n")
 
     for epoch in range(1, epochs + 1):
@@ -439,13 +445,13 @@ def train_gaussian_vae(
             best_elbo = test_elbo
             torch.save(
                 {"epoch": epoch, "model_state_dict": model.state_dict(),
-                 "config": {"latent_dim": latent_dim, "hidden_dim": hidden_dim}},
+                 "config": {"latent_dim": latent_dim, "hidden_dim": hidden_dim, "beta": beta}},
                 Path(save_dir) / "gaussian_vae_best.pt",
             )
 
     torch.save(
         {"epoch": epochs, "model_state_dict": model.state_dict(), "history": history,
-         "config": {"latent_dim": latent_dim, "hidden_dim": hidden_dim}},
+         "config": {"latent_dim": latent_dim, "hidden_dim": hidden_dim, "beta": beta}},
         Path(save_dir) / "gaussian_vae_final.pt",
     )
     print(f"\nGaussian VAE training complete. Best test ELBO: {best_elbo:.2f}")
@@ -591,7 +597,7 @@ def load_gaussian_vae(
     decoder_net = create_decoder_net(cfg["latent_dim"], cfg["hidden_dim"])
     encoder = GaussianEncoder(encoder_net)
     decoder = GaussianDecoder(decoder_net)
-    model = GaussianVAE(encoder, decoder, cfg["latent_dim"]).to(device)
+    model = GaussianVAE(encoder, decoder, cfg["latent_dim"], beta=cfg.get("beta", 1.0)).to(device)
     model.load_state_dict(ckpt["model_state_dict"])
     model.eval()
     return model

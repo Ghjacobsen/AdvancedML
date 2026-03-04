@@ -1,0 +1,857 @@
+========================================
+  Part B: Sampling Quality Experiments
+  Device: cuda
+========================================
+======================================================================
+PART B: SAMPLING QUALITY OF GENERATIVE MODELS
+======================================================================
+Device: cuda
+FID samples: 5000
+======================================================================
+
+[1/3] Loading existing DDPM checkpoint...
+
+[2/3] Loading existing Gaussian VAE checkpoint...
+      Loading existing Latent DDPM checkpoint...
+
+[3/3] Loading Part A VAE (mog prior)...
+      Loaded: models/mog/run_0/vae_mog_best.pt
+
+Loading 5000 real images for FID...
+Real images shape: torch.Size([5000, 1, 28, 28])
+
+Generating samples...
+Saved: reports/figures/ddpm_samples.png
+Saved: reports/figures/latent_ddpm_samples.png
+Saved: reports/figures/part_a_mog_samples_b.png
+
+Computing FID scores (classifier: models/mnist_classifier.pth)...
+FID — DDPM:        5.10
+FID — Latent DDPM: 95.29
+FID — Part A VAE:  18.25
+
+Latent DDPM FID vs sampling steps T:
+  T=0 (prior only)          FID: 82.66
+  T=10                      FID: 114.54
+  T=50                      FID: 101.14
+  T=200                     FID: 95.53
+  T=1000                    FID: 94.72
+Saved: reports/figures/latent_ddpm_fid_vs_T.png
+
+β-VAE sweep: training β-VAEs and Latent DDPMs for each β...
+
+  [β=1e-06] Training β-VAE...
+Training Gaussian VAE on: cuda
+
+============================================================
+Training β-VAE | β=1.00e-06 | latent_dim=20 | epochs=50
+============================================================
+
+Epoch   1 | Loss: 71.91 | Test ELBO: -42.50
+Epoch   2 | Loss: 36.66 | Test ELBO: -31.78
+Epoch   3 | Loss: 30.02 | Test ELBO: -27.71
+Epoch   4 | Loss: 27.12 | Test ELBO: -25.59
+Epoch   5 | Loss: 25.44 | Test ELBO: -24.25
+Epoch   6 | Loss: 24.26 | Test ELBO: -23.38
+Epoch   7 | Loss: 23.37 | Test ELBO: -22.66
+Epoch   8 | Loss: 22.65 | Test ELBO: -22.18
+Epoch   9 | Loss: 22.09 | Test ELBO: -21.57
+Epoch  10 | Loss: 21.60 | Test ELBO: -21.22
+Epoch  11 | Loss: 21.17 | Test ELBO: -20.75
+Epoch  12 | Loss: 20.80 | Test ELBO: -20.35
+Epoch  13 | Loss: 20.48 | Test ELBO: -20.14
+Epoch  14 | Loss: 20.19 | Test ELBO: -19.78
+Epoch  15 | Loss: 19.92 | Test ELBO: -19.60
+Epoch  16 | Loss: 19.67 | Test ELBO: -19.47
+Epoch  17 | Loss: 19.46 | Test ELBO: -19.27
+Epoch  18 | Loss: 19.25 | Test ELBO: -18.88
+Epoch  19 | Loss: 19.03 | Test ELBO: -18.75
+Epoch  20 | Loss: 18.86 | Test ELBO: -18.58
+Epoch  21 | Loss: 18.69 | Test ELBO: -18.38
+Epoch  22 | Loss: 18.55 | Test ELBO: -18.37
+Epoch  23 | Loss: 18.39 | Test ELBO: -18.14
+Epoch  24 | Loss: 18.26 | Test ELBO: -18.00
+Epoch  25 | Loss: 18.12 | Test ELBO: -17.92
+Epoch  26 | Loss: 17.99 | Test ELBO: -17.77
+Epoch  27 | Loss: 17.90 | Test ELBO: -17.64
+Epoch  28 | Loss: 17.78 | Test ELBO: -17.62
+Epoch  29 | Loss: 17.66 | Test ELBO: -17.74
+Epoch  30 | Loss: 17.58 | Test ELBO: -17.32
+Epoch  31 | Loss: 17.45 | Test ELBO: -17.25
+Epoch  32 | Loss: 17.38 | Test ELBO: -17.37
+Epoch  33 | Loss: 17.27 | Test ELBO: -17.15
+Epoch  34 | Loss: 17.19 | Test ELBO: -16.98
+Epoch  35 | Loss: 17.12 | Test ELBO: -17.26
+Epoch  36 | Loss: 17.04 | Test ELBO: -16.82
+Epoch  37 | Loss: 16.95 | Test ELBO: -16.85
+Epoch  38 | Loss: 16.86 | Test ELBO: -16.82
+Epoch  39 | Loss: 16.81 | Test ELBO: -16.77
+Epoch  40 | Loss: 16.75 | Test ELBO: -16.97
+Epoch  41 | Loss: 16.68 | Test ELBO: -16.67
+Epoch  42 | Loss: 16.62 | Test ELBO: -16.41
+Epoch  43 | Loss: 16.56 | Test ELBO: -16.53
+Epoch  44 | Loss: 16.48 | Test ELBO: -16.46
+Epoch  45 | Loss: 16.44 | Test ELBO: -16.48
+Epoch  46 | Loss: 16.40 | Test ELBO: -16.37
+Epoch  47 | Loss: 16.34 | Test ELBO: -16.26
+Epoch  48 | Loss: 16.29 | Test ELBO: -16.38
+Epoch  49 | Loss: 16.25 | Test ELBO: -16.23
+Epoch  50 | Loss: 16.20 | Test ELBO: -16.11
+
+Gaussian VAE training complete. Best test ELBO: -16.11
+  [β=1e-06] Training Latent DDPM...
+Training Latent DDPM on: cuda
+
+============================================================
+Training Latent DDPM | T=1000 | latent_dim=20 | epochs=100
+============================================================
+
+Epoch   1 | Loss: 0.4968
+Epoch   2 | Loss: 0.2883
+Epoch   3 | Loss: 0.2856
+Epoch   4 | Loss: 0.2823
+Epoch   5 | Loss: 0.2757
+Epoch   6 | Loss: 0.2712
+Epoch   7 | Loss: 0.2698
+Epoch   8 | Loss: 0.2709
+Epoch   9 | Loss: 0.2685
+Epoch  10 | Loss: 0.2687
+Epoch  11 | Loss: 0.2661
+Epoch  12 | Loss: 0.2643
+Epoch  13 | Loss: 0.2658
+Epoch  14 | Loss: 0.2674
+Epoch  15 | Loss: 0.2671
+Epoch  16 | Loss: 0.2651
+Epoch  17 | Loss: 0.2631
+Epoch  18 | Loss: 0.2619
+Epoch  19 | Loss: 0.2620
+Epoch  20 | Loss: 0.2628
+Epoch  21 | Loss: 0.2612
+Epoch  22 | Loss: 0.2606
+Epoch  23 | Loss: 0.2594
+Epoch  24 | Loss: 0.2571
+Epoch  25 | Loss: 0.2553
+Epoch  26 | Loss: 0.2569
+Epoch  27 | Loss: 0.2555
+Epoch  28 | Loss: 0.2550
+Epoch  29 | Loss: 0.2547
+Epoch  30 | Loss: 0.2550
+Epoch  31 | Loss: 0.2557
+Epoch  32 | Loss: 0.2559
+Epoch  33 | Loss: 0.2518
+Epoch  34 | Loss: 0.2525
+Epoch  35 | Loss: 0.2521
+Epoch  36 | Loss: 0.2524
+Epoch  37 | Loss: 0.2505
+Epoch  38 | Loss: 0.2502
+Epoch  39 | Loss: 0.2506
+Epoch  40 | Loss: 0.2500
+Epoch  41 | Loss: 0.2481
+Epoch  42 | Loss: 0.2481
+Epoch  43 | Loss: 0.2479
+Epoch  44 | Loss: 0.2457
+Epoch  45 | Loss: 0.2466
+Epoch  46 | Loss: 0.2445
+Epoch  47 | Loss: 0.2465
+Epoch  48 | Loss: 0.2436
+Epoch  49 | Loss: 0.2428
+Epoch  50 | Loss: 0.2434
+Epoch  51 | Loss: 0.2434
+Epoch  52 | Loss: 0.2441
+Epoch  53 | Loss: 0.2404
+Epoch  54 | Loss: 0.2440
+Epoch  55 | Loss: 0.2397
+Epoch  56 | Loss: 0.2425
+Epoch  57 | Loss: 0.2395
+Epoch  58 | Loss: 0.2389
+Epoch  59 | Loss: 0.2408
+Epoch  60 | Loss: 0.2389
+Epoch  61 | Loss: 0.2392
+Epoch  62 | Loss: 0.2410
+Epoch  63 | Loss: 0.2392
+Epoch  64 | Loss: 0.2402
+Epoch  65 | Loss: 0.2368
+Epoch  66 | Loss: 0.2355
+Epoch  67 | Loss: 0.2360
+Epoch  68 | Loss: 0.2367
+Epoch  69 | Loss: 0.2352
+Epoch  70 | Loss: 0.2344
+Epoch  71 | Loss: 0.2336
+Epoch  72 | Loss: 0.2333
+Epoch  73 | Loss: 0.2350
+Epoch  74 | Loss: 0.2360
+Epoch  75 | Loss: 0.2310
+Epoch  76 | Loss: 0.2330
+Epoch  77 | Loss: 0.2323
+Epoch  78 | Loss: 0.2317
+Epoch  79 | Loss: 0.2327
+Epoch  80 | Loss: 0.2324
+Epoch  81 | Loss: 0.2296
+Epoch  82 | Loss: 0.2287
+Epoch  83 | Loss: 0.2301
+Epoch  84 | Loss: 0.2282
+Epoch  85 | Loss: 0.2323
+Epoch  86 | Loss: 0.2297
+Epoch  87 | Loss: 0.2301
+Epoch  88 | Loss: 0.2278
+Epoch  89 | Loss: 0.2286
+Epoch  90 | Loss: 0.2286
+Epoch  91 | Loss: 0.2280
+Epoch  92 | Loss: 0.2292
+Epoch  93 | Loss: 0.2284
+Epoch  94 | Loss: 0.2266
+Epoch  95 | Loss: 0.2249
+Epoch  96 | Loss: 0.2262
+Epoch  97 | Loss: 0.2276
+Epoch  98 | Loss: 0.2270
+Epoch  99 | Loss: 0.2253
+Epoch 100 | Loss: 0.2266
+
+Latent DDPM training complete. Best loss: 0.2249
+  [β=1e-06] FID = 40.21
+
+  [β=1e-04] Training β-VAE...
+Training Gaussian VAE on: cuda
+
+============================================================
+Training β-VAE | β=1.00e-04 | latent_dim=20 | epochs=50
+============================================================
+
+Epoch   1 | Loss: 73.47 | Test ELBO: -44.02
+Epoch   2 | Loss: 38.01 | Test ELBO: -32.40
+Epoch   3 | Loss: 30.83 | Test ELBO: -28.33
+Epoch   4 | Loss: 27.71 | Test ELBO: -26.02
+Epoch   5 | Loss: 25.91 | Test ELBO: -24.65
+Epoch   6 | Loss: 24.68 | Test ELBO: -23.94
+Epoch   7 | Loss: 23.74 | Test ELBO: -23.13
+Epoch   8 | Loss: 22.99 | Test ELBO: -22.19
+Epoch   9 | Loss: 22.36 | Test ELBO: -21.79
+Epoch  10 | Loss: 21.86 | Test ELBO: -21.30
+Epoch  11 | Loss: 21.41 | Test ELBO: -20.92
+Epoch  12 | Loss: 21.00 | Test ELBO: -20.60
+Epoch  13 | Loss: 20.64 | Test ELBO: -20.20
+Epoch  14 | Loss: 20.33 | Test ELBO: -19.94
+Epoch  15 | Loss: 20.08 | Test ELBO: -19.70
+Epoch  16 | Loss: 19.79 | Test ELBO: -19.48
+Epoch  17 | Loss: 19.55 | Test ELBO: -19.24
+Epoch  18 | Loss: 19.36 | Test ELBO: -19.13
+Epoch  19 | Loss: 19.13 | Test ELBO: -18.87
+Epoch  20 | Loss: 18.96 | Test ELBO: -18.66
+Epoch  21 | Loss: 18.78 | Test ELBO: -18.54
+Epoch  22 | Loss: 18.62 | Test ELBO: -18.41
+Epoch  23 | Loss: 18.45 | Test ELBO: -18.17
+Epoch  24 | Loss: 18.34 | Test ELBO: -18.12
+Epoch  25 | Loss: 18.21 | Test ELBO: -17.99
+Epoch  26 | Loss: 18.09 | Test ELBO: -17.94
+Epoch  27 | Loss: 17.97 | Test ELBO: -17.82
+Epoch  28 | Loss: 17.86 | Test ELBO: -17.71
+Epoch  29 | Loss: 17.79 | Test ELBO: -17.66
+Epoch  30 | Loss: 17.70 | Test ELBO: -17.56
+Epoch  31 | Loss: 17.57 | Test ELBO: -17.36
+Epoch  32 | Loss: 17.51 | Test ELBO: -17.36
+Epoch  33 | Loss: 17.40 | Test ELBO: -17.30
+Epoch  34 | Loss: 17.35 | Test ELBO: -17.28
+Epoch  35 | Loss: 17.25 | Test ELBO: -17.18
+Epoch  36 | Loss: 17.20 | Test ELBO: -17.17
+Epoch  37 | Loss: 17.13 | Test ELBO: -16.98
+Epoch  38 | Loss: 17.08 | Test ELBO: -16.94
+Epoch  39 | Loss: 16.99 | Test ELBO: -16.95
+Epoch  40 | Loss: 16.95 | Test ELBO: -16.78
+Epoch  41 | Loss: 16.88 | Test ELBO: -16.70
+Epoch  42 | Loss: 16.83 | Test ELBO: -16.64
+Epoch  43 | Loss: 16.77 | Test ELBO: -16.63
+Epoch  44 | Loss: 16.72 | Test ELBO: -16.63
+Epoch  45 | Loss: 16.64 | Test ELBO: -16.66
+Epoch  46 | Loss: 16.63 | Test ELBO: -16.54
+Epoch  47 | Loss: 16.58 | Test ELBO: -16.51
+Epoch  48 | Loss: 16.52 | Test ELBO: -16.43
+Epoch  49 | Loss: 16.47 | Test ELBO: -16.37
+Epoch  50 | Loss: 16.43 | Test ELBO: -16.34
+
+Gaussian VAE training complete. Best test ELBO: -16.34
+  [β=1e-04] Training Latent DDPM...
+Training Latent DDPM on: cuda
+
+============================================================
+Training Latent DDPM | T=1000 | latent_dim=20 | epochs=100
+============================================================
+
+Epoch   1 | Loss: 0.5038
+Epoch   2 | Loss: 0.2940
+Epoch   3 | Loss: 0.2926
+Epoch   4 | Loss: 0.2902
+Epoch   5 | Loss: 0.2855
+Epoch   6 | Loss: 0.2802
+Epoch   7 | Loss: 0.2798
+Epoch   8 | Loss: 0.2803
+Epoch   9 | Loss: 0.2787
+Epoch  10 | Loss: 0.2771
+Epoch  11 | Loss: 0.2757
+Epoch  12 | Loss: 0.2748
+Epoch  13 | Loss: 0.2743
+Epoch  14 | Loss: 0.2754
+Epoch  15 | Loss: 0.2753
+Epoch  16 | Loss: 0.2751
+Epoch  17 | Loss: 0.2744
+Epoch  18 | Loss: 0.2735
+Epoch  19 | Loss: 0.2698
+Epoch  20 | Loss: 0.2699
+Epoch  21 | Loss: 0.2715
+Epoch  22 | Loss: 0.2692
+Epoch  23 | Loss: 0.2699
+Epoch  24 | Loss: 0.2679
+Epoch  25 | Loss: 0.2666
+Epoch  26 | Loss: 0.2647
+Epoch  27 | Loss: 0.2668
+Epoch  28 | Loss: 0.2658
+Epoch  29 | Loss: 0.2645
+Epoch  30 | Loss: 0.2649
+Epoch  31 | Loss: 0.2645
+Epoch  32 | Loss: 0.2638
+Epoch  33 | Loss: 0.2620
+Epoch  34 | Loss: 0.2636
+Epoch  35 | Loss: 0.2597
+Epoch  36 | Loss: 0.2589
+Epoch  37 | Loss: 0.2588
+Epoch  38 | Loss: 0.2580
+Epoch  39 | Loss: 0.2602
+Epoch  40 | Loss: 0.2597
+Epoch  41 | Loss: 0.2577
+Epoch  42 | Loss: 0.2573
+Epoch  43 | Loss: 0.2533
+Epoch  44 | Loss: 0.2562
+Epoch  45 | Loss: 0.2532
+Epoch  46 | Loss: 0.2558
+Epoch  47 | Loss: 0.2552
+Epoch  48 | Loss: 0.2556
+Epoch  49 | Loss: 0.2552
+Epoch  50 | Loss: 0.2551
+Epoch  51 | Loss: 0.2550
+Epoch  52 | Loss: 0.2531
+Epoch  53 | Loss: 0.2523
+Epoch  54 | Loss: 0.2503
+Epoch  55 | Loss: 0.2503
+Epoch  56 | Loss: 0.2501
+Epoch  57 | Loss: 0.2502
+Epoch  58 | Loss: 0.2491
+Epoch  59 | Loss: 0.2506
+Epoch  60 | Loss: 0.2461
+Epoch  61 | Loss: 0.2503
+Epoch  62 | Loss: 0.2474
+Epoch  63 | Loss: 0.2467
+Epoch  64 | Loss: 0.2481
+Epoch  65 | Loss: 0.2453
+Epoch  66 | Loss: 0.2486
+Epoch  67 | Loss: 0.2466
+Epoch  68 | Loss: 0.2450
+Epoch  69 | Loss: 0.2436
+Epoch  70 | Loss: 0.2420
+Epoch  71 | Loss: 0.2450
+Epoch  72 | Loss: 0.2424
+Epoch  73 | Loss: 0.2429
+Epoch  74 | Loss: 0.2441
+Epoch  75 | Loss: 0.2421
+Epoch  76 | Loss: 0.2437
+Epoch  77 | Loss: 0.2424
+Epoch  78 | Loss: 0.2405
+Epoch  79 | Loss: 0.2396
+Epoch  80 | Loss: 0.2398
+Epoch  81 | Loss: 0.2399
+Epoch  82 | Loss: 0.2386
+Epoch  83 | Loss: 0.2386
+Epoch  84 | Loss: 0.2395
+Epoch  85 | Loss: 0.2377
+Epoch  86 | Loss: 0.2379
+Epoch  87 | Loss: 0.2384
+Epoch  88 | Loss: 0.2387
+Epoch  89 | Loss: 0.2380
+Epoch  90 | Loss: 0.2353
+Epoch  91 | Loss: 0.2357
+Epoch  92 | Loss: 0.2374
+Epoch  93 | Loss: 0.2369
+Epoch  94 | Loss: 0.2357
+Epoch  95 | Loss: 0.2353
+Epoch  96 | Loss: 0.2366
+Epoch  97 | Loss: 0.2362
+Epoch  98 | Loss: 0.2337
+Epoch  99 | Loss: 0.2338
+Epoch 100 | Loss: 0.2362
+
+Latent DDPM training complete. Best loss: 0.2337
+  [β=1e-04] FID = 48.80
+
+  [β=1e-02] Training β-VAE...
+Training Gaussian VAE on: cuda
+
+============================================================
+Training β-VAE | β=1.00e-02 | latent_dim=20 | epochs=50
+============================================================
+
+Epoch   1 | Loss: 76.51 | Test ELBO: -46.13
+Epoch   2 | Loss: 38.52 | Test ELBO: -32.50
+Epoch   3 | Loss: 30.58 | Test ELBO: -28.04
+Epoch   4 | Loss: 27.50 | Test ELBO: -26.24
+Epoch   5 | Loss: 25.76 | Test ELBO: -24.56
+Epoch   6 | Loss: 24.48 | Test ELBO: -23.56
+Epoch   7 | Loss: 23.49 | Test ELBO: -22.78
+Epoch   8 | Loss: 22.71 | Test ELBO: -22.07
+Epoch   9 | Loss: 22.06 | Test ELBO: -21.44
+Epoch  10 | Loss: 21.52 | Test ELBO: -21.25
+Epoch  11 | Loss: 21.06 | Test ELBO: -20.50
+Epoch  12 | Loss: 20.66 | Test ELBO: -20.34
+Epoch  13 | Loss: 20.31 | Test ELBO: -19.94
+Epoch  14 | Loss: 20.01 | Test ELBO: -19.58
+Epoch  15 | Loss: 19.74 | Test ELBO: -19.40
+Epoch  16 | Loss: 19.48 | Test ELBO: -19.23
+Epoch  17 | Loss: 19.26 | Test ELBO: -19.02
+Epoch  18 | Loss: 19.07 | Test ELBO: -18.74
+Epoch  19 | Loss: 18.87 | Test ELBO: -18.52
+Epoch  20 | Loss: 18.68 | Test ELBO: -18.44
+Epoch  21 | Loss: 18.52 | Test ELBO: -18.34
+Epoch  22 | Loss: 18.37 | Test ELBO: -18.15
+Epoch  23 | Loss: 18.25 | Test ELBO: -18.24
+Epoch  24 | Loss: 18.10 | Test ELBO: -17.82
+Epoch  25 | Loss: 17.97 | Test ELBO: -17.85
+Epoch  26 | Loss: 17.86 | Test ELBO: -17.82
+Epoch  27 | Loss: 17.76 | Test ELBO: -17.57
+Epoch  28 | Loss: 17.65 | Test ELBO: -17.54
+Epoch  29 | Loss: 17.56 | Test ELBO: -17.42
+Epoch  30 | Loss: 17.46 | Test ELBO: -17.35
+Epoch  31 | Loss: 17.38 | Test ELBO: -17.19
+Epoch  32 | Loss: 17.29 | Test ELBO: -17.22
+Epoch  33 | Loss: 17.20 | Test ELBO: -17.05
+Epoch  34 | Loss: 17.15 | Test ELBO: -17.11
+Epoch  35 | Loss: 17.06 | Test ELBO: -16.94
+Epoch  36 | Loss: 17.00 | Test ELBO: -16.89
+Epoch  37 | Loss: 16.92 | Test ELBO: -16.75
+Epoch  38 | Loss: 16.87 | Test ELBO: -16.92
+Epoch  39 | Loss: 16.78 | Test ELBO: -16.75
+Epoch  40 | Loss: 16.74 | Test ELBO: -16.58
+Epoch  41 | Loss: 16.68 | Test ELBO: -16.65
+Epoch  42 | Loss: 16.63 | Test ELBO: -16.57
+Epoch  43 | Loss: 16.57 | Test ELBO: -16.64
+Epoch  44 | Loss: 16.52 | Test ELBO: -16.53
+Epoch  45 | Loss: 16.49 | Test ELBO: -16.46
+Epoch  46 | Loss: 16.41 | Test ELBO: -16.41
+Epoch  47 | Loss: 16.40 | Test ELBO: -16.38
+Epoch  48 | Loss: 16.34 | Test ELBO: -16.34
+Epoch  49 | Loss: 16.30 | Test ELBO: -16.30
+Epoch  50 | Loss: 16.28 | Test ELBO: -16.32
+
+Gaussian VAE training complete. Best test ELBO: -16.30
+  [β=1e-02] Training Latent DDPM...
+Training Latent DDPM on: cuda
+
+============================================================
+Training Latent DDPM | T=1000 | latent_dim=20 | epochs=100
+============================================================
+
+Epoch   1 | Loss: 0.4788
+Epoch   2 | Loss: 0.2597
+Epoch   3 | Loss: 0.2553
+Epoch   4 | Loss: 0.2541
+Epoch   5 | Loss: 0.2554
+Epoch   6 | Loss: 0.2553
+Epoch   7 | Loss: 0.2533
+Epoch   8 | Loss: 0.2495
+Epoch   9 | Loss: 0.2473
+Epoch  10 | Loss: 0.2486
+Epoch  11 | Loss: 0.2497
+Epoch  12 | Loss: 0.2463
+Epoch  13 | Loss: 0.2453
+Epoch  14 | Loss: 0.2448
+Epoch  15 | Loss: 0.2443
+Epoch  16 | Loss: 0.2420
+Epoch  17 | Loss: 0.2435
+Epoch  18 | Loss: 0.2422
+Epoch  19 | Loss: 0.2438
+Epoch  20 | Loss: 0.2445
+Epoch  21 | Loss: 0.2429
+Epoch  22 | Loss: 0.2429
+Epoch  23 | Loss: 0.2434
+Epoch  24 | Loss: 0.2426
+Epoch  25 | Loss: 0.2418
+Epoch  26 | Loss: 0.2403
+Epoch  27 | Loss: 0.2404
+Epoch  28 | Loss: 0.2400
+Epoch  29 | Loss: 0.2406
+Epoch  30 | Loss: 0.2371
+Epoch  31 | Loss: 0.2392
+Epoch  32 | Loss: 0.2419
+Epoch  33 | Loss: 0.2383
+Epoch  34 | Loss: 0.2334
+Epoch  35 | Loss: 0.2370
+Epoch  36 | Loss: 0.2348
+Epoch  37 | Loss: 0.2350
+Epoch  38 | Loss: 0.2361
+Epoch  39 | Loss: 0.2332
+Epoch  40 | Loss: 0.2333
+Epoch  41 | Loss: 0.2335
+Epoch  42 | Loss: 0.2318
+Epoch  43 | Loss: 0.2299
+Epoch  44 | Loss: 0.2307
+Epoch  45 | Loss: 0.2278
+Epoch  46 | Loss: 0.2313
+Epoch  47 | Loss: 0.2304
+Epoch  48 | Loss: 0.2289
+Epoch  49 | Loss: 0.2277
+Epoch  50 | Loss: 0.2293
+Epoch  51 | Loss: 0.2291
+Epoch  52 | Loss: 0.2267
+Epoch  53 | Loss: 0.2266
+Epoch  54 | Loss: 0.2265
+Epoch  55 | Loss: 0.2275
+Epoch  56 | Loss: 0.2239
+Epoch  57 | Loss: 0.2269
+Epoch  58 | Loss: 0.2248
+Epoch  59 | Loss: 0.2234
+Epoch  60 | Loss: 0.2246
+Epoch  61 | Loss: 0.2218
+Epoch  62 | Loss: 0.2228
+Epoch  63 | Loss: 0.2231
+Epoch  64 | Loss: 0.2226
+Epoch  65 | Loss: 0.2232
+Epoch  66 | Loss: 0.2208
+Epoch  67 | Loss: 0.2199
+Epoch  68 | Loss: 0.2223
+Epoch  69 | Loss: 0.2220
+Epoch  70 | Loss: 0.2199
+Epoch  71 | Loss: 0.2202
+Epoch  72 | Loss: 0.2201
+Epoch  73 | Loss: 0.2210
+Epoch  74 | Loss: 0.2175
+Epoch  75 | Loss: 0.2188
+Epoch  76 | Loss: 0.2209
+Epoch  77 | Loss: 0.2163
+Epoch  78 | Loss: 0.2194
+Epoch  79 | Loss: 0.2156
+Epoch  80 | Loss: 0.2149
+Epoch  81 | Loss: 0.2180
+Epoch  82 | Loss: 0.2177
+Epoch  83 | Loss: 0.2184
+Epoch  84 | Loss: 0.2146
+Epoch  85 | Loss: 0.2143
+Epoch  86 | Loss: 0.2156
+Epoch  87 | Loss: 0.2144
+Epoch  88 | Loss: 0.2162
+Epoch  89 | Loss: 0.2148
+Epoch  90 | Loss: 0.2144
+Epoch  91 | Loss: 0.2130
+Epoch  92 | Loss: 0.2141
+Epoch  93 | Loss: 0.2151
+Epoch  94 | Loss: 0.2140
+Epoch  95 | Loss: 0.2144
+Epoch  96 | Loss: 0.2135
+Epoch  97 | Loss: 0.2122
+Epoch  98 | Loss: 0.2145
+Epoch  99 | Loss: 0.2102
+Epoch 100 | Loss: 0.2107
+
+Latent DDPM training complete. Best loss: 0.2102
+  [β=1e-02] FID = 39.28
+
+  [β=1e+00] Training β-VAE...
+Training Gaussian VAE on: cuda
+
+============================================================
+Training β-VAE | β=1.00e+00 | latent_dim=20 | epochs=50
+============================================================
+
+Epoch   1 | Loss: 100.69 | Test ELBO: -82.72
+Epoch   2 | Loss: 70.16 | Test ELBO: -62.74
+Epoch   3 | Loss: 61.11 | Test ELBO: -58.77
+Epoch   4 | Loss: 57.96 | Test ELBO: -56.16
+Epoch   5 | Loss: 55.96 | Test ELBO: -54.82
+Epoch   6 | Loss: 54.55 | Test ELBO: -53.57
+Epoch   7 | Loss: 53.40 | Test ELBO: -52.47
+Epoch   8 | Loss: 52.61 | Test ELBO: -51.83
+Epoch   9 | Loss: 51.81 | Test ELBO: -51.05
+Epoch  10 | Loss: 51.19 | Test ELBO: -50.50
+Epoch  11 | Loss: 50.66 | Test ELBO: -49.95
+Epoch  12 | Loss: 50.25 | Test ELBO: -49.63
+Epoch  13 | Loss: 49.99 | Test ELBO: -49.24
+Epoch  14 | Loss: 49.65 | Test ELBO: -49.26
+Epoch  15 | Loss: 49.35 | Test ELBO: -49.33
+Epoch  16 | Loss: 49.18 | Test ELBO: -48.80
+Epoch  17 | Loss: 48.93 | Test ELBO: -48.91
+Epoch  18 | Loss: 48.77 | Test ELBO: -48.39
+Epoch  19 | Loss: 48.58 | Test ELBO: -47.93
+Epoch  20 | Loss: 48.44 | Test ELBO: -48.01
+Epoch  21 | Loss: 48.34 | Test ELBO: -47.78
+Epoch  22 | Loss: 48.16 | Test ELBO: -48.00
+Epoch  23 | Loss: 48.00 | Test ELBO: -47.75
+Epoch  24 | Loss: 47.91 | Test ELBO: -47.35
+Epoch  25 | Loss: 47.79 | Test ELBO: -47.51
+Epoch  26 | Loss: 47.71 | Test ELBO: -47.79
+Epoch  27 | Loss: 47.60 | Test ELBO: -47.28
+Epoch  28 | Loss: 47.52 | Test ELBO: -47.25
+Epoch  29 | Loss: 47.42 | Test ELBO: -47.07
+Epoch  30 | Loss: 47.29 | Test ELBO: -47.39
+Epoch  31 | Loss: 47.18 | Test ELBO: -46.94
+Epoch  32 | Loss: 47.10 | Test ELBO: -47.00
+Epoch  33 | Loss: 46.97 | Test ELBO: -46.84
+Epoch  34 | Loss: 46.89 | Test ELBO: -46.61
+Epoch  35 | Loss: 46.79 | Test ELBO: -46.54
+Epoch  36 | Loss: 46.75 | Test ELBO: -46.50
+Epoch  37 | Loss: 46.68 | Test ELBO: -46.41
+Epoch  38 | Loss: 46.61 | Test ELBO: -46.43
+Epoch  39 | Loss: 46.56 | Test ELBO: -46.27
+Epoch  40 | Loss: 46.51 | Test ELBO: -46.24
+Epoch  41 | Loss: 46.40 | Test ELBO: -46.15
+Epoch  42 | Loss: 46.35 | Test ELBO: -46.18
+Epoch  43 | Loss: 46.30 | Test ELBO: -46.22
+Epoch  44 | Loss: 46.25 | Test ELBO: -46.29
+Epoch  45 | Loss: 46.23 | Test ELBO: -46.20
+Epoch  46 | Loss: 46.14 | Test ELBO: -46.02
+Epoch  47 | Loss: 46.12 | Test ELBO: -45.84
+Epoch  48 | Loss: 46.10 | Test ELBO: -45.83
+Epoch  49 | Loss: 46.01 | Test ELBO: -45.85
+Epoch  50 | Loss: 45.97 | Test ELBO: -45.91
+
+Gaussian VAE training complete. Best test ELBO: -45.83
+  [β=1e+00] Training Latent DDPM...
+Training Latent DDPM on: cuda
+
+============================================================
+Training Latent DDPM | T=1000 | latent_dim=20 | epochs=100
+============================================================
+
+Epoch   1 | Loss: 0.4388
+Epoch   2 | Loss: 0.2058
+Epoch   3 | Loss: 0.2074
+Epoch   4 | Loss: 0.2075
+Epoch   5 | Loss: 0.2061
+Epoch   6 | Loss: 0.2006
+Epoch   7 | Loss: 0.1833
+Epoch   8 | Loss: 0.1688
+Epoch   9 | Loss: 0.1639
+Epoch  10 | Loss: 0.1566
+Epoch  11 | Loss: 0.1536
+Epoch  12 | Loss: 0.1503
+Epoch  13 | Loss: 0.1500
+Epoch  14 | Loss: 0.1490
+Epoch  15 | Loss: 0.1480
+Epoch  16 | Loss: 0.1457
+Epoch  17 | Loss: 0.1453
+Epoch  18 | Loss: 0.1447
+Epoch  19 | Loss: 0.1433
+Epoch  20 | Loss: 0.1428
+Epoch  21 | Loss: 0.1424
+Epoch  22 | Loss: 0.1431
+Epoch  23 | Loss: 0.1411
+Epoch  24 | Loss: 0.1408
+Epoch  25 | Loss: 0.1405
+Epoch  26 | Loss: 0.1415
+Epoch  27 | Loss: 0.1428
+Epoch  28 | Loss: 0.1387
+Epoch  29 | Loss: 0.1405
+Epoch  30 | Loss: 0.1405
+Epoch  31 | Loss: 0.1397
+Epoch  32 | Loss: 0.1391
+Epoch  33 | Loss: 0.1402
+Epoch  34 | Loss: 0.1404
+Epoch  35 | Loss: 0.1394
+Epoch  36 | Loss: 0.1389
+Epoch  37 | Loss: 0.1402
+Epoch  38 | Loss: 0.1398
+Epoch  39 | Loss: 0.1397
+Epoch  40 | Loss: 0.1385
+Epoch  41 | Loss: 0.1378
+Epoch  42 | Loss: 0.1380
+Epoch  43 | Loss: 0.1383
+Epoch  44 | Loss: 0.1375
+Epoch  45 | Loss: 0.1369
+Epoch  46 | Loss: 0.1377
+Epoch  47 | Loss: 0.1387
+Epoch  48 | Loss: 0.1377
+Epoch  49 | Loss: 0.1378
+Epoch  50 | Loss: 0.1382
+Epoch  51 | Loss: 0.1360
+Epoch  52 | Loss: 0.1376
+Epoch  53 | Loss: 0.1365
+Epoch  54 | Loss: 0.1382
+Epoch  55 | Loss: 0.1383
+Epoch  56 | Loss: 0.1366
+Epoch  57 | Loss: 0.1373
+Epoch  58 | Loss: 0.1365
+Epoch  59 | Loss: 0.1373
+Epoch  60 | Loss: 0.1365
+Epoch  61 | Loss: 0.1365
+Epoch  62 | Loss: 0.1359
+Epoch  63 | Loss: 0.1362
+Epoch  64 | Loss: 0.1379
+Epoch  65 | Loss: 0.1395
+Epoch  66 | Loss: 0.1371
+Epoch  67 | Loss: 0.1370
+Epoch  68 | Loss: 0.1383
+Epoch  69 | Loss: 0.1374
+Epoch  70 | Loss: 0.1359
+Epoch  71 | Loss: 0.1365
+Epoch  72 | Loss: 0.1363
+Epoch  73 | Loss: 0.1345
+Epoch  74 | Loss: 0.1362
+Epoch  75 | Loss: 0.1363
+Epoch  76 | Loss: 0.1355
+Epoch  77 | Loss: 0.1367
+Epoch  78 | Loss: 0.1356
+Epoch  79 | Loss: 0.1364
+Epoch  80 | Loss: 0.1357
+Epoch  81 | Loss: 0.1354
+Epoch  82 | Loss: 0.1356
+Epoch  83 | Loss: 0.1352
+Epoch  84 | Loss: 0.1332
+Epoch  85 | Loss: 0.1366
+Epoch  86 | Loss: 0.1347
+Epoch  87 | Loss: 0.1378
+Epoch  88 | Loss: 0.1344
+Epoch  89 | Loss: 0.1339
+Epoch  90 | Loss: 0.1370
+Epoch  91 | Loss: 0.1361
+Epoch  92 | Loss: 0.1343
+Epoch  93 | Loss: 0.1349
+Epoch  94 | Loss: 0.1351
+Epoch  95 | Loss: 0.1363
+Epoch  96 | Loss: 0.1363
+Epoch  97 | Loss: 0.1344
+Epoch  98 | Loss: 0.1357
+Epoch  99 | Loss: 0.1354
+Epoch 100 | Loss: 0.1361
+
+Latent DDPM training complete. Best loss: 0.1332
+  [β=1e+00] FID = 80.75
+
+β-VAE sweep FID results:
+  β=1e-06   FID: 40.21
+  β=1e-04   FID: 48.80
+  β=1e-02   FID: 39.28
+  β=1e+00   FID: 80.75
+Saved: reports/figures/latent_ddpm_fid_vs_beta.png
+
+Measuring sampling times (samples/second)...
+  DDPM:        8.79 samples/s
+  Latent DDPM: 394.52 samples/s
+  Part A VAE:  387671.91 samples/s
+
+Generating latent distribution comparison plot...
+Saved: reports/figures/latent_distribution_comparison.png
+
+======================================================================
+PART B — RESULTS SUMMARY
+======================================================================
+Model                            FID    Speed (samples/s)
+---------------------------------------------------------
+DDPM                            5.10                 8.79
+Latent DDPM                    95.29               394.52
+Part A VAE (mog)               18.25            387671.91
+======================================================================
+
+Latent DDPM FID vs T:
+  T=0       FID: 82.66
+  T=10      FID: 114.54
+  T=50      FID: 101.14
+  T=200     FID: 95.53
+  T=1000    FID: 94.72
+
+Latent DDPM FID vs β:
+  β=1e-06   FID: 40.21
+  β=1e-04   FID: 48.80
+  β=1e-02   FID: 39.28
+  β=1e+00   FID: 80.75
+
+Results saved to: reports/part_b_results.json
+
+Part B complete. Results in reports/part_b_results.json
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27943143: <part_b_train> in cluster <dcc> Done
+
+Job <part_b_train> was submitted from host <hpclogin1> by user <s214422> in cluster <dcc> at Tue Mar  3 17:57:44 2026
+Job was executed on host(s) <4*n-62-20-10>, in queue <gpuv100>, as user <s214422> in cluster <dcc> at Tue Mar  3 17:57:46 2026
+</zhome/c3/1/167609> was used as the home directory.
+</zhome/c3/1/167609/AdvancedML> was used as the working directory.
+Started at Tue Mar  3 17:57:46 2026
+Terminated at Tue Mar  3 18:47:36 2026
+Results reported at Tue Mar  3 18:47:36 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# train_part_b.sh — LSF single job: Part B sampling quality experiments
+#
+# Trains (sequentially in one GPU job):
+#   1. Image-space DDPM (U-Net, T=1000, 100 epochs) on standard MNIST
+#   2. Gaussian VAE  (latent_dim=20, 50 epochs) on standard MNIST
+#   3. Latent DDPM   (MLP, T=1000, 100 epochs) on VAE latent codes
+#   4. Evaluation: FID scores, FID vs T, sampling times, all plots
+#
+# Prerequisites:  bash batch/setup_gpu.sh   (one-time, on login node)
+# Submit:         bsub < batch/train_part_b.sh
+# ===========================================================================
+#BSUB -J part_b_train
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -R "rusage[mem=16GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 04:00
+#BSUB -o logs/part_b_%J.out
+#BSUB -e logs/part_b_%J.err
+
+set -euo pipefail
+
+# ── Environment ────────────────────────────────────────────────────────
+REPO_DIR="$HOME/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+module load nccl/2.21.5-1-cuda-12.2.2
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+
+mkdir -p logs models reports/figures
+
+echo "========================================"
+echo "  Part B: Sampling Quality Experiments"
+echo "  Device: $(python -c 'import torch; print("cuda" if torch.cuda.is_available() else "cpu")')"
+echo "========================================"
+
+# ── Run full Part B pipeline ───────────────────────────────────────────
+# --skip-training reuses existing DDPM/VAE/LatentDDPM checkpoints;
+# the β sweep always trains fresh models per β in models/beta_sweep/.
+python src/project/run_part_b.py \
+    --ddpm-epochs 100 \
+    --vae-epochs 50 \
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3179.00 sec.
+    Max Memory :                                 1177 MB
+    Average Memory :                             1042.22 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               64359.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                11
+    Run time :                                   3006 sec.
+    Turnaround time :                            2992 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/part_b_27943143.err> for stderr output of this job.
+
