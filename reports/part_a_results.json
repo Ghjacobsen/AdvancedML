@@ -1,40 +1,41 @@
 {
-  "timestamp": "2026-03-02T14:02:40.217223",
+  "timestamp": "2026-03-02T14:15:54.276292",
   "results": {
     "gaussian": {
       "display_name": "Standard Gaussian",
-      "mean_elbo": -83.98844700520833,
-      "std_elbo": 0.7064481610949085,
+      "mean_elbo": -83.97256026204427,
+      "std_elbo": 0.6641519815545355,
       "per_run_elbos": [
-        -84.4293548828125,
-        -84.54439739990234,
-        -82.99158873291016
+        -84.31966403808593,
+        -84.55484301757812,
+        -83.04317373046875
       ],
       "best_run_idx": 2,
       "best_checkpoint": "models/gaussian/run_2/vae_gaussian_best.pt"
     },
     "mog": {
       "display_name": "Mixture of Gaussians",
-      "mean_elbo": -80.47124674479166,
-      "std_elbo": 0.5695735250209812,
+      "mean_elbo": -80.44797901204426,
+      "std_elbo": 0.5826256313373411,
       "per_run_elbos": [
-        -80.62465280761718,
-        -81.0793582397461,
-        -79.70972918701172
+        -80.68886732177734,
+        -81.00992664794921,
+        -79.64514306640625
       ],
       "best_run_idx": 2,
       "best_checkpoint": "models/mog/run_2/vae_mog_best.pt"
     },
     "flow": {
       "display_name": "Normalizing Flow",
-      "mean_elbo": -78.38550256958008,
-      "std_elbo": 0.24946406860351544,
+      "mean_elbo": -77.6601248046875,
+      "std_elbo": 0.3660040544748707,
       "per_run_elbos": [
-        -78.13603850097657,
-        -78.6349666381836
+        -78.06712290039063,
+        -77.73357857666015,
+        -77.17967293701172
       ],
-      "best_run_idx": 0,
-      "best_checkpoint": "models/flow/run_0/vae_flow_best.pt"
+      "best_run_idx": 2,
+      "best_checkpoint": "models/flow/run_2/vae_flow_best.pt"
     }
   }
 }
