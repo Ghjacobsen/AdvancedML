@@ -1,0 +1,1039 @@
+========================================
+  Ensemble Geodesics + CoV
+  Device: cpu
+========================================
+
+=== Stage 1: Geodesic computation ===
+# Ensemble VAE Geometry Experiment
+# Mode: geodesics
+#   batch_size = 32
+#   data_dir = data/
+#   device = cpu
+#   epochs = 50
+#   geo_lr = 0.01
+#   geo_steps = 1000
+#   latent_dim = 2
+#   lr = 0.001
+#   mode = geodesics
+#   num_cov_pairs = 10
+#   num_curves = 25
+#   num_decoders = 3
+#   num_mc = 50
+#   num_reruns = 10
+#   num_t = 20
+#   pair_seed = 42
+#   retrain_idx = 0
+#   save_dir = models/ensemble
+#   verbose = True
+
+
+============================================================
+  Computing geodesics with K=1 decoders (retrain 0)
+============================================================
+  Pair 1/25
+  Step    0: energy = 3.0785
+  Step  200: energy = 3.0248
+  Step  400: energy = 3.0248
+  Step  600: energy = 3.0248
+  Step  800: energy = 3.0248
+  Pair 2/25
+  Step    0: energy = 3.7930
+  Step  200: energy = 3.7255
+  Step  400: energy = 3.7255
+  Step  600: energy = 3.7255
+  Step  800: energy = 3.7255
+  Pair 3/25
+  Step    0: energy = 5.2085
+  Step  200: energy = 5.0263
+  Step  400: energy = 5.0263
+  Step  600: energy = 5.0263
+  Step  800: energy = 5.0263
+  Pair 4/25
+  Step    0: energy = 3.0244
+  Step  200: energy = 2.9413
+  Step  400: energy = 2.9412
+  Step  600: energy = 2.9412
+  Step  800: energy = 2.9412
+  Pair 5/25
+  Step    0: energy = 9.7546
+  Step  200: energy = 9.1159
+  Step  400: energy = 9.1159
+  Step  600: energy = 9.1159
+  Step  800: energy = 9.1159
+  Pair 6/25
+  Step    0: energy = 4.9206
+  Step  200: energy = 4.7394
+  Step  400: energy = 4.7394
+  Step  600: energy = 4.7394
+  Step  800: energy = 4.7394
+  Pair 7/25
+  Step    0: energy = 3.5846
+  Step  200: energy = 3.4465
+  Step  400: energy = 3.4464
+  Step  600: energy = 3.4464
+  Step  800: energy = 3.4464
+  Pair 8/25
+  Step    0: energy = 0.0050
+  Step  200: energy = 0.0050
+  Step  400: energy = 0.0050
+  Step  600: energy = 0.0050
+  Step  800: energy = 0.0050
+  Pair 9/25
+  Step    0: energy = 5.8355
+  Step  200: energy = 5.6048
+  Step  400: energy = 5.6048
+  Step  600: energy = 5.6048
+  Step  800: energy = 5.6048
+  Pair 10/25
+  Step    0: energy = 3.1480
+  Step  200: energy = 3.1001
+  Step  400: energy = 3.1001
+  Step  600: energy = 3.1001
+  Step  800: energy = 3.1001
+  Pair 11/25
+  Step    0: energy = 7.1747
+  Step  200: energy = 6.8897
+  Step  400: energy = 6.8896
+  Step  600: energy = 6.8896
+  Step  800: energy = 6.8896
+  Pair 12/25
+  Step    0: energy = 5.2406
+  Step  200: energy = 5.0153
+  Step  400: energy = 5.0153
+  Step  600: energy = 5.0153
+  Step  800: energy = 5.0153
+  Pair 13/25
+  Step    0: energy = 1.5074
+  Step  200: energy = 1.4972
+  Step  400: energy = 1.4972
+  Step  600: energy = 1.4972
+  Step  800: energy = 1.4972
+  Pair 14/25
+  Step    0: energy = 0.3325
+  Step  200: energy = 0.3325
+  Step  400: energy = 0.3325
+  Step  600: energy = 0.3325
+  Step  800: energy = 0.3325
+  Pair 15/25
+  Step    0: energy = 2.8507
+  Step  200: energy = 2.8201
+  Step  400: energy = 2.8201
+  Step  600: energy = 2.8201
+  Step  800: energy = 2.8201
+  Pair 16/25
+  Step    0: energy = 4.8397
+  Step  200: energy = 4.7252
+  Step  400: energy = 4.7252
+  Step  600: energy = 4.7252
+  Step  800: energy = 4.7252
+  Pair 17/25
+  Step    0: energy = 7.2714
+  Step  200: energy = 6.7945
+  Step  400: energy = 6.7945
+  Step  600: energy = 6.7945
+  Step  800: energy = 6.7945
+  Pair 18/25
+  Step    0: energy = 0.7833
+  Step  200: energy = 0.7777
+  Step  400: energy = 0.7777
+  Step  600: energy = 0.7777
+  Step  800: energy = 0.7777
+  Pair 19/25
+  Step    0: energy = 8.6896
+  Step  200: energy = 8.5243
+  Step  400: energy = 8.5243
+  Step  600: energy = 8.5243
+  Step  800: energy = 8.5243
+  Pair 20/25
+  Step    0: energy = 15.1098
+  Step  200: energy = 13.9251
+  Step  400: energy = 13.9251
+  Step  600: energy = 13.9251
+  Step  800: energy = 13.9251
+  Pair 21/25
+  Step    0: energy = 11.3975
+  Step  200: energy = 10.6614
+  Step  400: energy = 10.6614
+  Step  600: energy = 10.6614
+  Step  800: energy = 10.6614
+  Pair 22/25
+  Step    0: energy = 1.2764
+  Step  200: energy = 1.2647
+  Step  400: energy = 1.2647
+  Step  600: energy = 1.2647
+  Step  800: energy = 1.2647
+  Pair 23/25
+  Step    0: energy = 11.3903
+  Step  200: energy = 10.3488
+  Step  400: energy = 10.3487
+  Step  600: energy = 10.3487
+  Step  800: energy = 10.3487
+  Pair 24/25
+  Step    0: energy = 0.0291
+  Step  200: energy = 0.0291
+  Step  400: energy = 0.0291
+  Step  600: energy = 0.0291
+  Step  800: energy = 0.0291
+  Pair 25/25
+  Step    0: energy = 24.6083
+  Step  200: energy = 21.3510
+  Step  400: energy = 21.3491
+  Step  600: energy = 21.3491
+  Step  800: energy = 21.3491
+  Saved: models/ensemble/results/geodesics_K1.pdf
+
+============================================================
+  Computing geodesics with K=2 decoders (retrain 0)
+============================================================
+  Pair 1/25
+  Step    0: energy = 2569.0022
+  Step  200: energy = 803.5670
+  Step  400: energy = 450.5247
+  Step  600: energy = 353.4824
+  Step  800: energy = 320.6645
+  Pair 2/25
+  Step    0: energy = 654.1038
+  Step  200: energy = 157.4445
+  Step  400: energy = 139.5859
+  Step  600: energy = 134.2297
+  Step  800: energy = 113.0647
+  Pair 3/25
+  Step    0: energy = 620.2891
+  Step  200: energy = 150.8933
+  Step  400: energy = 164.8642
+  Step  600: energy = 126.7413
+  Step  800: energy = 134.9968
+  Pair 4/25
+  Step    0: energy = 969.6419
+  Step  200: energy = 243.4402
+  Step  400: energy = 170.8076
+  Step  600: energy = 181.2893
+  Step  800: energy = 152.8862
+  Pair 5/25
+  Step    0: energy = 4268.1484
+  Step  200: energy = 3643.9812
+  Step  400: energy = 2053.9753
+  Step  600: energy = 1295.6924
+  Step  800: energy = 1089.5740
+  Pair 6/25
+  Step    0: energy = 2521.6838
+  Step  200: energy = 1228.9252
+  Step  400: energy = 582.2501
+  Step  600: energy = 394.1345
+  Step  800: energy = 364.4130
+  Pair 7/25
+  Step    0: energy = 1812.0488
+  Step  200: energy = 249.9759
+  Step  400: energy = 200.2825
+  Step  600: energy = 181.7148
+  Step  800: energy = 199.0738
+  Pair 8/25
+  Step    0: energy = 130.7772
+  Step  200: energy = 83.7735
+  Step  400: energy = 75.2066
+  Step  600: energy = 74.9936
+  Step  800: energy = 72.6154
+  Pair 9/25
+  Step    0: energy = 1014.3600
+  Step  200: energy = 236.9316
+  Step  400: energy = 207.5321
+  Step  600: energy = 207.9550
+  Step  800: energy = 162.1823
+  Pair 10/25
+  Step    0: energy = 999.2209
+  Step  200: energy = 179.8595
+  Step  400: energy = 127.4499
+  Step  600: energy = 133.6833
+  Step  800: energy = 160.9585
+  Pair 11/25
+  Step    0: energy = 3787.9517
+  Step  200: energy = 2801.2878
+  Step  400: energy = 1509.4105
+  Step  600: energy = 1232.7405
+  Step  800: energy = 1036.1941
+  Pair 12/25
+  Step    0: energy = 5263.6426
+  Step  200: energy = 2376.8901
+  Step  400: energy = 1001.4453
+  Step  600: energy = 603.8957
+  Step  800: energy = 660.9883
+  Pair 13/25
+  Step    0: energy = 5047.8906
+  Step  200: energy = 2590.6694
+  Step  400: energy = 1793.6591
+  Step  600: energy = 1505.1467
+  Step  800: energy = 1232.3634
+  Pair 14/25
+  Step    0: energy = 11185.7539
+  Step  200: energy = 7781.7402
+  Step  400: energy = 5700.4727
+  Step  600: energy = 3970.5103
+  Step  800: energy = 3456.0820
+  Pair 15/25
+  Step    0: energy = 169.5637
+  Step  200: energy = 90.4760
+  Step  400: energy = 100.2398
+  Step  600: energy = 86.3595
+  Step  800: energy = 81.9276
+  Pair 16/25
+  Step    0: energy = 730.9221
+  Step  200: energy = 140.8780
+  Step  400: energy = 153.9230
+  Step  600: energy = 136.2549
+  Step  800: energy = 130.9440
+  Pair 17/25
+  Step    0: energy = 1146.7301
+  Step  200: energy = 224.9782
+  Step  400: energy = 190.3898
+  Step  600: energy = 227.0664
+  Step  800: energy = 162.6518
+  Pair 18/25
+  Step    0: energy = 108.0974
+  Step  200: energy = 75.2551
+  Step  400: energy = 70.2267
+  Step  600: energy = 78.8509
+  Step  800: energy = 90.5837
+  Pair 19/25
+  Step    0: energy = 5044.4976
+  Step  200: energy = 3353.8572
+  Step  400: energy = 2151.2751
+  Step  600: energy = 1285.7317
+  Step  800: energy = 1341.0054
+  Pair 20/25
+  Step    0: energy = 2561.8262
+  Step  200: energy = 1454.0762
+  Step  400: energy = 683.5509
+  Step  600: energy = 570.1174
+  Step  800: energy = 518.4268
+  Pair 21/25
+  Step    0: energy = 6288.7534
+  Step  200: energy = 3512.4429
+  Step  400: energy = 2127.4353
+  Step  600: energy = 1579.9587
+  Step  800: energy = 1222.0186
+  Pair 22/25
+  Step    0: energy = 160.7272
+  Step  200: energy = 96.9360
+  Step  400: energy = 97.9341
+  Step  600: energy = 83.9675
+  Step  800: energy = 91.4211
+  Pair 23/25
+  Step    0: energy = 8274.6191
+  Step  200: energy = 4464.6011
+  Step  400: energy = 3697.3826
+  Step  600: energy = 2721.8394
+  Step  800: energy = 2979.4053
+  Pair 24/25
+  Step    0: energy = 11494.1816
+  Step  200: energy = 6010.7407
+  Step  400: energy = 7671.5059
+  Step  600: energy = 4358.8682
+  Step  800: energy = 5537.3115
+  Pair 25/25
+  Step    0: energy = 4237.5264
+  Step  200: energy = 3875.4131
+  Step  400: energy = 2355.1025
+  Step  600: energy = 1589.3567
+  Step  800: energy = 910.4695
+  Saved: models/ensemble/results/geodesics_K2.pdf
+
+============================================================
+  Computing geodesics with K=3 decoders (retrain 0)
+============================================================
+  Pair 1/25
+  Step    0: energy = 3623.4114
+  Step  200: energy = 1242.0430
+  Step  400: energy = 635.0756
+  Step  600: energy = 524.0737
+  Step  800: energy = 433.9631
+  Pair 2/25
+  Step    0: energy = 681.0034
+  Step  200: energy = 200.8556
+  Step  400: energy = 165.5569
+  Step  600: energy = 154.0604
+  Step  800: energy = 174.5651
+  Pair 3/25
+  Step    0: energy = 512.7706
+  Step  200: energy = 179.6582
+  Step  400: energy = 181.1959
+  Step  600: energy = 176.7874
+  Step  800: energy = 186.8481
+  Pair 4/25
+  Step    0: energy = 1439.6589
+  Step  200: energy = 298.9974
+  Step  400: energy = 240.0229
+  Step  600: energy = 226.2332
+  Step  800: energy = 224.4434
+  Pair 5/25
+  Step    0: energy = 8933.2930
+  Step  200: energy = 5357.2183
+  Step  400: energy = 2374.5774
+  Step  600: energy = 2268.8242
+  Step  800: energy = 2112.0928
+  Pair 6/25
+  Step    0: energy = 4806.2266
+  Step  200: energy = 1607.1644
+  Step  400: energy = 705.2192
+  Step  600: energy = 626.6624
+  Step  800: energy = 533.2265
+  Pair 7/25
+  Step    0: energy = 2035.8839
+  Step  200: energy = 492.8016
+  Step  400: energy = 270.5341
+  Step  600: energy = 280.1542
+  Step  800: energy = 273.9655
+  Pair 8/25
+  Step    0: energy = 139.3467
+  Step  200: energy = 83.9027
+  Step  400: energy = 120.5564
+  Step  600: energy = 119.3789
+  Step  800: energy = 99.7136
+  Pair 9/25
+  Step    0: energy = 938.4212
+  Step  200: energy = 239.7810
+  Step  400: energy = 218.1385
+  Step  600: energy = 221.7926
+  Step  800: energy = 210.9357
+  Pair 10/25
+  Step    0: energy = 967.3010
+  Step  200: energy = 211.0934
+  Step  400: energy = 182.9460
+  Step  600: energy = 170.7625
+  Step  800: energy = 192.2895
+  Pair 11/25
+  Step    0: energy = 11200.9961
+  Step  200: energy = 3958.8240
+  Step  400: energy = 2809.2712
+  Step  600: energy = 1894.3119
+  Step  800: energy = 1534.8732
+  Pair 12/25
+  Step    0: energy = 7671.6069
+  Step  200: energy = 3393.7798
+  Step  400: energy = 1746.7826
+  Step  600: energy = 1242.4514
+  Step  800: energy = 1152.3928
+  Pair 13/25
+  Step    0: energy = 9178.2822
+  Step  200: energy = 5437.5488
+  Step  400: energy = 2453.4280
+  Step  600: energy = 2067.3457
+  Step  800: energy = 1462.8756
+  Pair 14/25
+  Step    0: energy = 19488.8340
+  Step  200: energy = 12048.1992
+  Step  400: energy = 9557.5039
+  Step  600: energy = 6474.5439
+  Step  800: energy = 6160.8765
+  Pair 15/25
+  Step    0: energy = 183.0677
+  Step  200: energy = 110.0967
+  Step  400: energy = 109.0648
+  Step  600: energy = 111.9093
+  Step  800: energy = 142.3934
+  Pair 16/25
+  Step    0: energy = 944.7862
+  Step  200: energy = 254.8970
+  Step  400: energy = 185.6493
+  Step  600: energy = 187.0849
+  Step  800: energy = 194.0759
+  Pair 17/25
+  Step    0: energy = 1352.4742
+  Step  200: energy = 373.2583
+  Step  400: energy = 271.8428
+  Step  600: energy = 254.4711
+  Step  800: energy = 245.8723
+  Pair 18/25
+  Step    0: energy = 104.9420
+  Step  200: energy = 107.4459
+  Step  400: energy = 91.9583
+  Step  600: energy = 104.0663
+  Step  800: energy = 100.8252
+  Pair 19/25
+  Step    0: energy = 8961.7002
+  Step  200: energy = 3991.6963
+  Step  400: energy = 2337.5649
+  Step  600: energy = 1803.6073
+  Step  800: energy = 1620.7649
+  Pair 20/25
+  Step    0: energy = 3596.8716
+  Step  200: energy = 1669.2173
+  Step  400: energy = 903.0686
+  Step  600: energy = 810.8431
+  Step  800: energy = 801.4377
+  Pair 21/25
+  Step    0: energy = 9263.8076
+  Step  200: energy = 5405.5029
+  Step  400: energy = 3514.0415
+  Step  600: energy = 2280.8516
+  Step  800: energy = 1972.6980
+  Pair 22/25
+  Step    0: energy = 143.5716
+  Step  200: energy = 109.3736
+  Step  400: energy = 100.7066
+  Step  600: energy = 107.9004
+  Step  800: energy = 122.2952
+  Pair 23/25
+  Step    0: energy = 14379.0547
+  Step  200: energy = 9844.3281
+  Step  400: energy = 7170.1919
+  Step  600: energy = 4738.5815
+  Step  800: energy = 4574.6396
+  Pair 24/25
+  Step    0: energy = 18224.1699
+  Step  200: energy = 16502.7988
+  Step  400: energy = 12191.0137
+  Step  600: energy = 8564.0684
+  Step  800: energy = 7376.4600
+  Pair 25/25
+  Step    0: energy = 7861.5869
+  Step  200: energy = 4645.2300
+  Step  400: energy = 2560.2678
+  Step  600: energy = 2049.1333
+  Step  800: energy = 2162.1948
+  Saved: models/ensemble/results/geodesics_K3.pdf
+
+Geodesic results saved to models/ensemble/results/
+
+=== Stage 2: CoV analysis ===
+# Ensemble VAE Geometry Experiment
+# Mode: cov
+#   batch_size = 32
+#   data_dir = data/
+#   device = cpu
+#   epochs = 50
+#   geo_lr = 0.01
+#   geo_steps = 1000
+#   latent_dim = 2
+#   lr = 0.001
+#   mode = cov
+#   num_cov_pairs = 10
+#   num_curves = 25
+#   num_decoders = 3
+#   num_mc = 50
+#   num_reruns = 10
+#   num_t = 20
+#   pair_seed = 42
+#   retrain_idx = 0
+#   save_dir = models/ensemble
+#   verbose = True
+
+
+############################################################
+  RETRAIN 0/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=3.4587, geo=1.7392
+    Pair 2/10: euc=2.9785, geo=1.9301
+    Pair 3/10: euc=4.3117, geo=2.2419
+    Pair 4/10: euc=2.7375, geo=1.7150
+    Pair 5/10: euc=6.6244, geo=3.0193
+    Pair 6/10: euc=4.1039, geo=2.1770
+    Pair 7/10: euc=3.5790, geo=1.8564
+    Pair 8/10: euc=0.1087, geo=0.0705
+    Pair 9/10: euc=4.6746, geo=2.3674
+    Pair 10/10: euc=2.6539, geo=1.7607
+
+  K=2 decoders
+    Pair 1/10: euc=3.4587, geo=18.1792
+    Pair 2/10: euc=2.9785, geo=11.0404
+    Pair 3/10: euc=4.3117, geo=12.0200
+    Pair 4/10: euc=2.7375, geo=13.1911
+    Pair 5/10: euc=6.6244, geo=31.3484
+    Pair 6/10: euc=4.1039, geo=18.4176
+    Pair 7/10: euc=3.5790, geo=14.5006
+    Pair 8/10: euc=0.1087, geo=8.3497
+    Pair 9/10: euc=4.6746, geo=13.7527
+    Pair 10/10: euc=2.6539, geo=11.0330
+
+  K=3 decoders
+    Pair 1/10: euc=3.4587, geo=19.9388
+    Pair 2/10: euc=2.9785, geo=12.6754
+    Pair 3/10: euc=4.3117, geo=13.6005
+    Pair 4/10: euc=2.7375, geo=14.4168
+    Pair 5/10: euc=6.6244, geo=40.7875
+    Pair 6/10: euc=4.1039, geo=22.1621
+    Pair 7/10: euc=3.5790, geo=15.7333
+    Pair 8/10: euc=0.1087, geo=9.6381
+    Pair 9/10: euc=4.6746, geo=15.1809
+    Pair 10/10: euc=2.6539, geo=14.2583
+
+############################################################
+  RETRAIN 1/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.9899, geo=1.6208
+    Pair 2/10: euc=4.9860, geo=2.1840
+    Pair 3/10: euc=3.4718, geo=1.5569
+    Pair 4/10: euc=2.0083, geo=1.1497
+    Pair 5/10: euc=8.4608, geo=3.9299
+    Pair 6/10: euc=4.0452, geo=1.6729
+    Pair 7/10: euc=1.2279, geo=0.4488
+    Pair 8/10: euc=0.0896, geo=0.0574
+    Pair 9/10: euc=3.5807, geo=1.6445
+    Pair 10/10: euc=2.6272, geo=1.5807
+
+  K=2 decoders
+    Pair 1/10: euc=2.9899, geo=8.3700
+    Pair 2/10: euc=4.9860, geo=8.1664
+    Pair 3/10: euc=3.4718, geo=5.9927
+    Pair 4/10: euc=2.0083, geo=7.4580
+    Pair 5/10: euc=8.4608, geo=13.0785
+    Pair 6/10: euc=4.0452, geo=8.9227
+    Pair 7/10: euc=1.2279, geo=7.2718
+    Pair 8/10: euc=0.0896, geo=4.5553
+    Pair 9/10: euc=3.5807, geo=6.3381
+    Pair 10/10: euc=2.6272, geo=6.9531
+
+  K=3 decoders
+    Pair 1/10: euc=2.9899, geo=13.8228
+    Pair 2/10: euc=4.9860, geo=12.9660
+    Pair 3/10: euc=3.4718, geo=10.3266
+    Pair 4/10: euc=2.0083, geo=11.4775
+    Pair 5/10: euc=8.4608, geo=17.7904
+    Pair 6/10: euc=4.0452, geo=15.4097
+    Pair 7/10: euc=1.2279, geo=12.4097
+    Pair 8/10: euc=0.0896, geo=8.5886
+    Pair 9/10: euc=3.5807, geo=10.8213
+    Pair 10/10: euc=2.6272, geo=11.2222
+
+############################################################
+  RETRAIN 2/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.5157, geo=1.6063
+    Pair 2/10: euc=3.3837, geo=2.2230
+    Pair 3/10: euc=2.7679, geo=1.7559
+    Pair 4/10: euc=1.6935, geo=1.2198
+    Pair 5/10: euc=6.1293, geo=3.7400
+    Pair 6/10: euc=2.3992, geo=1.4394
+    Pair 7/10: euc=1.0148, geo=0.5570
+    Pair 8/10: euc=0.1504, geo=0.1268
+    Pair 9/10: euc=2.1661, geo=1.4364
+    Pair 10/10: euc=1.9274, geo=1.4601
+
+  K=2 decoders
+    Pair 1/10: euc=2.5157, geo=5.5376
+    Pair 2/10: euc=3.3837, geo=6.7478
+    Pair 3/10: euc=2.7679, geo=5.2270
+    Pair 4/10: euc=1.6935, geo=6.4975
+    Pair 5/10: euc=6.1293, geo=10.1642
+    Pair 6/10: euc=2.3992, geo=6.1450
+    Pair 7/10: euc=1.0148, geo=5.7211
+    Pair 8/10: euc=0.1504, geo=4.3594
+    Pair 9/10: euc=2.1661, geo=4.4943
+    Pair 10/10: euc=1.9274, geo=5.4728
+
+  K=3 decoders
+    Pair 1/10: euc=2.5157, geo=8.2423
+    Pair 2/10: euc=3.3837, geo=10.5514
+    Pair 3/10: euc=2.7679, geo=8.7662
+    Pair 4/10: euc=1.6935, geo=10.2419
+    Pair 5/10: euc=6.1293, geo=11.0404
+    Pair 6/10: euc=2.3992, geo=9.4310
+    Pair 7/10: euc=1.0148, geo=9.5989
+    Pair 8/10: euc=0.1504, geo=10.3418
+    Pair 9/10: euc=2.1661, geo=8.8184
+    Pair 10/10: euc=1.9274, geo=9.4727
+
+############################################################
+  RETRAIN 3/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.7043, geo=1.7229
+    Pair 2/10: euc=3.3144, geo=2.1593
+    Pair 3/10: euc=2.7342, geo=1.6673
+    Pair 4/10: euc=1.5140, geo=1.1351
+    Pair 5/10: euc=5.7899, geo=3.6978
+    Pair 6/10: euc=2.8736, geo=1.5896
+    Pair 7/10: euc=1.1451, geo=0.5917
+    Pair 8/10: euc=0.1729, geo=0.1229
+    Pair 9/10: euc=2.5207, geo=1.5950
+    Pair 10/10: euc=2.0530, geo=1.5541
+
+  K=2 decoders
+    Pair 1/10: euc=2.7043, geo=16.1326
+    Pair 2/10: euc=3.3144, geo=14.6908
+    Pair 3/10: euc=2.7342, geo=15.4734
+    Pair 4/10: euc=1.5140, geo=13.8905
+    Pair 5/10: euc=5.7899, geo=16.4445
+    Pair 6/10: euc=2.8736, geo=17.0476
+    Pair 7/10: euc=1.1451, geo=13.5265
+    Pair 8/10: euc=0.1729, geo=14.1270
+    Pair 9/10: euc=2.5207, geo=12.7325
+    Pair 10/10: euc=2.0530, geo=13.5665
+
+  K=3 decoders
+    Pair 1/10: euc=2.7043, geo=19.0975
+    Pair 2/10: euc=3.3144, geo=18.5988
+    Pair 3/10: euc=2.7342, geo=17.4331
+    Pair 4/10: euc=1.5140, geo=16.7464
+    Pair 5/10: euc=5.7899, geo=22.4115
+    Pair 6/10: euc=2.8736, geo=20.0939
+    Pair 7/10: euc=1.1451, geo=19.3923
+    Pair 8/10: euc=0.1729, geo=18.8321
+    Pair 9/10: euc=2.5207, geo=17.2900
+    Pair 10/10: euc=2.0530, geo=19.4063
+
+############################################################
+  RETRAIN 4/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.6945, geo=1.4805
+    Pair 2/10: euc=3.5929, geo=1.9347
+    Pair 3/10: euc=3.6807, geo=1.8783
+    Pair 4/10: euc=1.7142, geo=1.1418
+    Pair 5/10: euc=7.3140, geo=3.9142
+    Pair 6/10: euc=2.7964, geo=1.6158
+    Pair 7/10: euc=0.9835, geo=0.5518
+    Pair 8/10: euc=0.1942, geo=0.1384
+    Pair 9/10: euc=2.4185, geo=1.3331
+    Pair 10/10: euc=1.6240, geo=1.1567
+
+  K=2 decoders
+    Pair 1/10: euc=2.6945, geo=7.3471
+    Pair 2/10: euc=3.5929, geo=5.1547
+    Pair 3/10: euc=3.6807, geo=4.1635
+    Pair 4/10: euc=1.7142, geo=5.7708
+    Pair 5/10: euc=7.3140, geo=10.2471
+    Pair 6/10: euc=2.7964, geo=7.0992
+    Pair 7/10: euc=0.9835, geo=4.2103
+    Pair 8/10: euc=0.1942, geo=4.3294
+    Pair 9/10: euc=2.4185, geo=4.4542
+    Pair 10/10: euc=1.6240, geo=5.1804
+
+  K=3 decoders
+    Pair 1/10: euc=2.6945, geo=11.6254
+    Pair 2/10: euc=3.5929, geo=13.2573
+    Pair 3/10: euc=3.6807, geo=10.6814
+    Pair 4/10: euc=1.7142, geo=13.5854
+    Pair 5/10: euc=7.3140, geo=14.0332
+    Pair 6/10: euc=2.7964, geo=11.3044
+    Pair 7/10: euc=0.9835, geo=11.3993
+    Pair 8/10: euc=0.1942, geo=9.1927
+    Pair 9/10: euc=2.4185, geo=10.4351
+    Pair 10/10: euc=1.6240, geo=11.2584
+
+############################################################
+  RETRAIN 5/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.4664, geo=1.6109
+    Pair 2/10: euc=5.1634, geo=2.2695
+    Pair 3/10: euc=3.8737, geo=1.7845
+    Pair 4/10: euc=2.2110, geo=1.1701
+    Pair 5/10: euc=7.8524, geo=3.6719
+    Pair 6/10: euc=3.2344, geo=1.4726
+    Pair 7/10: euc=1.2865, geo=0.4601
+    Pair 8/10: euc=0.1398, geo=0.0696
+    Pair 9/10: euc=3.2677, geo=1.5226
+    Pair 10/10: euc=2.4225, geo=1.2627
+
+  K=2 decoders
+    Pair 1/10: euc=2.4664, geo=20.7243
+    Pair 2/10: euc=5.1634, geo=31.6824
+    Pair 3/10: euc=3.8737, geo=19.2269
+    Pair 4/10: euc=2.2110, geo=25.9752
+    Pair 5/10: euc=7.8524, geo=27.5183
+    Pair 6/10: euc=3.2344, geo=23.9673
+    Pair 7/10: euc=1.2865, geo=23.4249
+    Pair 8/10: euc=0.1398, geo=17.8231
+    Pair 9/10: euc=3.2677, geo=20.8009
+    Pair 10/10: euc=2.4225, geo=19.6315
+
+  K=3 decoders
+    Pair 1/10: euc=2.4664, geo=19.9272
+    Pair 2/10: euc=5.1634, geo=27.5638
+    Pair 3/10: euc=3.8737, geo=17.6572
+    Pair 4/10: euc=2.2110, geo=21.4202
+    Pair 5/10: euc=7.8524, geo=27.0915
+    Pair 6/10: euc=3.2344, geo=20.8934
+    Pair 7/10: euc=1.2865, geo=20.7185
+    Pair 8/10: euc=0.1398, geo=16.9762
+    Pair 9/10: euc=3.2677, geo=20.8216
+    Pair 10/10: euc=2.4225, geo=19.5132
+
+############################################################
+  RETRAIN 6/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.1897, geo=1.5033
+    Pair 2/10: euc=5.1270, geo=2.4218
+    Pair 3/10: euc=3.5322, geo=1.9074
+    Pair 4/10: euc=2.1077, geo=1.2100
+    Pair 5/10: euc=7.3865, geo=3.7861
+    Pair 6/10: euc=3.2917, geo=1.4558
+    Pair 7/10: euc=1.8029, geo=0.7770
+    Pair 8/10: euc=0.6057, geo=0.3187
+    Pair 9/10: euc=3.6708, geo=1.9519
+    Pair 10/10: euc=2.3724, geo=1.4347
+
+  K=2 decoders
+    Pair 1/10: euc=2.1897, geo=24.7714
+    Pair 2/10: euc=5.1270, geo=18.9776
+    Pair 3/10: euc=3.5322, geo=9.7518
+    Pair 4/10: euc=2.1077, geo=15.1032
+    Pair 5/10: euc=7.3865, geo=31.0421
+    Pair 6/10: euc=3.2917, geo=28.2302
+    Pair 7/10: euc=1.8029, geo=16.8046
+    Pair 8/10: euc=0.6057, geo=5.5571
+    Pair 9/10: euc=3.6708, geo=11.3078
+    Pair 10/10: euc=2.3724, geo=10.3016
+
+  K=3 decoders
+    Pair 1/10: euc=2.1897, geo=25.5851
+    Pair 2/10: euc=5.1270, geo=21.9791
+    Pair 3/10: euc=3.5322, geo=11.2483
+    Pair 4/10: euc=2.1077, geo=16.6974
+    Pair 5/10: euc=7.3865, geo=34.1325
+    Pair 6/10: euc=3.2917, geo=31.5106
+    Pair 7/10: euc=1.8029, geo=18.1951
+    Pair 8/10: euc=0.6057, geo=5.8597
+    Pair 9/10: euc=3.6708, geo=14.1856
+    Pair 10/10: euc=2.3724, geo=11.1780
+
+############################################################
+  RETRAIN 7/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=3.1868, geo=1.5900
+    Pair 2/10: euc=4.1898, geo=2.3384
+    Pair 3/10: euc=3.2484, geo=1.8670
+    Pair 4/10: euc=1.6941, geo=1.0424
+    Pair 5/10: euc=6.7607, geo=3.6629
+    Pair 6/10: euc=3.7136, geo=1.5290
+    Pair 7/10: euc=1.8199, geo=0.9122
+    Pair 8/10: euc=0.3024, geo=0.2026
+    Pair 9/10: euc=2.9612, geo=1.7520
+    Pair 10/10: euc=2.5894, geo=1.5396
+
+  K=2 decoders
+    Pair 1/10: euc=3.1868, geo=6.7103
+    Pair 2/10: euc=4.1898, geo=4.4602
+    Pair 3/10: euc=3.2484, geo=5.9809
+    Pair 4/10: euc=1.6941, geo=4.2480
+    Pair 5/10: euc=6.7607, geo=13.1515
+    Pair 6/10: euc=3.7136, geo=5.9462
+    Pair 7/10: euc=1.8199, geo=3.9035
+    Pair 8/10: euc=0.3024, geo=3.4183
+    Pair 9/10: euc=2.9612, geo=4.1142
+    Pair 10/10: euc=2.5894, geo=4.2498
+
+  K=3 decoders
+    Pair 1/10: euc=3.1868, geo=15.0799
+    Pair 2/10: euc=4.1898, geo=13.2968
+    Pair 3/10: euc=3.2484, geo=12.3770
+    Pair 4/10: euc=1.6941, geo=12.9068
+    Pair 5/10: euc=6.7607, geo=19.9287
+    Pair 6/10: euc=3.7136, geo=14.8122
+    Pair 7/10: euc=1.8199, geo=12.5922
+    Pair 8/10: euc=0.3024, geo=12.2316
+    Pair 9/10: euc=2.9612, geo=12.0389
+    Pair 10/10: euc=2.5894, geo=13.2633
+
+############################################################
+  RETRAIN 8/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=2.6937, geo=1.3695
+    Pair 2/10: euc=3.5832, geo=2.1303
+    Pair 3/10: euc=4.2007, geo=1.7653
+    Pair 4/10: euc=1.7027, geo=1.1470
+    Pair 5/10: euc=6.4126, geo=3.3350
+    Pair 6/10: euc=3.0937, geo=1.8282
+    Pair 7/10: euc=2.0062, geo=1.0589
+    Pair 8/10: euc=0.1193, geo=0.0796
+    Pair 9/10: euc=2.8524, geo=1.4142
+    Pair 10/10: euc=1.7935, geo=1.2316
+
+  K=2 decoders
+    Pair 1/10: euc=2.6937, geo=4.5861
+    Pair 2/10: euc=3.5832, geo=5.8288
+    Pair 3/10: euc=4.2007, geo=7.6080
+    Pair 4/10: euc=1.7027, geo=4.2591
+    Pair 5/10: euc=6.4126, geo=10.3412
+    Pair 6/10: euc=3.0937, geo=5.5741
+    Pair 7/10: euc=2.0062, geo=4.8792
+    Pair 8/10: euc=0.1193, geo=4.3432
+    Pair 9/10: euc=2.8524, geo=5.5181
+    Pair 10/10: euc=1.7935, geo=3.6492
+
+  K=3 decoders
+    Pair 1/10: euc=2.6937, geo=20.7750
+    Pair 2/10: euc=3.5832, geo=22.0085
+    Pair 3/10: euc=4.2007, geo=23.0960
+    Pair 4/10: euc=1.7027, geo=20.2833
+    Pair 5/10: euc=6.4126, geo=27.4521
+    Pair 6/10: euc=3.0937, geo=22.0852
+    Pair 7/10: euc=2.0062, geo=20.7886
+    Pair 8/10: euc=0.1193, geo=21.5138
+    Pair 9/10: euc=2.8524, geo=22.3425
+    Pair 10/10: euc=1.7935, geo=20.2251
+
+############################################################
+  RETRAIN 9/10 — CoV evaluation
+############################################################
+
+  K=1 decoders
+    Pair 1/10: euc=3.7182, geo=1.9474
+    Pair 2/10: euc=4.9758, geo=2.2596
+    Pair 3/10: euc=3.3940, geo=1.5729
+    Pair 4/10: euc=1.7990, geo=1.0432
+    Pair 5/10: euc=8.1156, geo=3.8394
+    Pair 6/10: euc=3.8728, geo=1.7614
+    Pair 7/10: euc=2.0828, geo=0.8092
+    Pair 8/10: euc=0.1791, geo=0.1153
+    Pair 9/10: euc=3.6154, geo=1.6588
+    Pair 10/10: euc=2.3961, geo=1.3947
+
+  K=2 decoders
+    Pair 1/10: euc=3.7182, geo=8.7292
+    Pair 2/10: euc=4.9758, geo=9.6794
+    Pair 3/10: euc=3.3940, geo=6.2217
+    Pair 4/10: euc=1.7990, geo=7.9045
+    Pair 5/10: euc=8.1156, geo=12.5482
+    Pair 6/10: euc=3.8728, geo=10.3192
+    Pair 7/10: euc=2.0828, geo=7.8883
+    Pair 8/10: euc=0.1791, geo=6.2249
+    Pair 9/10: euc=3.6154, geo=7.0476
+    Pair 10/10: euc=2.3961, geo=7.3240
+
+  K=3 decoders
+    Pair 1/10: euc=3.7182, geo=12.9634
+    Pair 2/10: euc=4.9758, geo=13.8363
+    Pair 3/10: euc=3.3940, geo=11.4233
+    Pair 4/10: euc=1.7990, geo=11.9373
+    Pair 5/10: euc=8.1156, geo=15.5698
+    Pair 6/10: euc=3.8728, geo=13.9715
+    Pair 7/10: euc=2.0828, geo=12.1436
+    Pair 8/10: euc=0.1791, geo=11.7137
+    Pair 9/10: euc=3.6154, geo=11.9770
+    Pair 10/10: euc=2.3961, geo=12.5462
+
+K=1: Euclidean CoV = 0.2474 ± 0.1734
+K=1: Geodesic  CoV = 0.1988 ± 0.1729
+
+K=2: Euclidean CoV = 0.2474 ± 0.1734
+K=2: Geodesic  CoV = 0.5794 ± 0.0570
+
+K=3: Euclidean CoV = 0.2474 ± 0.1734
+K=3: Geodesic  CoV = 0.3087 ± 0.0465
+  Saved: models/ensemble/results/cov_plot.pdf
+
+CoV results saved to models/ensemble/results/
+
+Done. Results in models/ensemble/results/
+total 373
+drwxr-xr-x  2 s214374 s21     9 Apr  1 11:12 .
+drwxr-xr-x 13 s214374 s21    11 Apr  1 10:13 ..
+-rw-r--r--  1 s214374 s21 12049 Apr  1 11:12 cov_distances.pt
+-rw-r--r--  1 s214374 s21 17294 Apr  1 11:12 cov_plot.pdf
+-rw-r--r--  1 s214374 s21  2407 Apr  1 11:12 cov_results.json
+-rw-r--r--  1 s214374 s21 59331 Apr  1 10:14 geodesics_K1.pdf
+-rw-r--r--  1 s214374 s21 56691 Apr  1 10:14 geodesics_K1_retrain0.pt
+-rw-r--r--  1 s214374 s21 58976 Apr  1 10:19 geodesics_K2.pdf
+-rw-r--r--  1 s214374 s21 56691 Apr  1 10:19 geodesics_K2_retrain0.pt
+-rw-r--r--  1 s214374 s21 58930 Apr  1 10:25 geodesics_K3.pdf
+-rw-r--r--  1 s214374 s21 56691 Apr  1 10:25 geodesics_K3_retrain0.pt
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28130606: <ens_geodesics> in cluster <dcc> Done
+
+Job <ens_geodesics> was submitted from host <hpclogin1> by user <s214374> in cluster <dcc> at Wed Apr  1 10:02:53 2026
+Job was executed on host(s) <4*n-62-18-5>, in queue <gpua10>, as user <s214374> in cluster <dcc> at Wed Apr  1 10:13:07 2026
+</zhome/02/6/167678> was used as the home directory.
+</work3/s214374/AdvancedML> was used as the working directory.
+Started at Wed Apr  1 10:13:07 2026
+Terminated at Wed Apr  1 11:12:38 2026
+Results reported at Wed Apr  1 11:12:38 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# run_geodesics.sh — Compute geodesics + CoV analysis from trained models
+#
+# Run AFTER train_ensemble.sh completes.
+# Computes:
+#   1. Part A geodesics (K=1 single decoder) 
+#   2. Part B geodesics (K=1,2,3 ensemble)
+#   3. CoV analysis across 10 retrainings
+#   4. All plots (saved to models/ensemble/results/)
+#
+# Submit:   bsub < batch/run_geodesics.sh
+# ===========================================================================
+#BSUB -J ens_geodesics
+#BSUB -q gpua10
+#BSUB -n 4
+#BSUB -R "rusage[mem=8GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 04:00
+#BSUB -o logs/ens_geodesics_%J.out
+#BSUB -e logs/ens_geodesics_%J.err
+
+set -euo pipefail
+
+# ── Environment ───────────────────────────────────────────────────────
+REPO_DIR="/work3/s214374/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+export PYTHONUNBUFFERED=1
+export PYTHONPATH="$REPO_DIR/src:$PYTHONPATH"
+
+mkdir -p logs models/ensemble/results
+
+DEVICE=$(python -c 'import torch; print("cuda" if torch.cuda.is_available() else "cpu")')
+echo "========================================"
+echo "  Ensemble Geodesics + CoV"
+echo "  Device: ${DEVICE}"
+echo "========================================"
+
+# ── 1. Compute geodesics (Part A: K=1, Part B: K=1,2,3) ──────────────
+echo ""
+echo "=== Stage 1: Geodesic computation ==="
+python src/project2/experiment.py geodesics \
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3567.00 sec.
+    Max Memory :                                 367 MB
+    Average Memory :                             319.96 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               32401.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                7
+    Run time :                                   3571 sec.
+    Turnaround time :                            4185 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/ens_geodesics_28130606.err> for stderr output of this job.
+

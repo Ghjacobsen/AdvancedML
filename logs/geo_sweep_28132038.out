@@ -1,0 +1,123 @@
+Device: cpu
+Start: Wed Apr  1 20:24:04 CEST 2026
+Total combinations: 540
+Max time: 3300s
+Device: cpu
+
+
+[1/540] {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.5, 'decay_every': 200}
+  Geo CoV: K1=0.198 | K2=0.554 | K3=0.290 | score=0.790 | 882s
+
+[2/540] {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.5, 'decay_every': 400}
+  Geo CoV: K1=0.198 | K2=0.567 | K3=0.280 | score=0.780 | 886s
+
+[3/540] {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.3, 'decay_every': 200}
+  Geo CoV: K1=0.198 | K2=0.561 | K3=0.291 | score=0.791 | 872s
+
+[4/540] {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.3, 'decay_every': 400}
+  Geo CoV: K1=0.198 | K2=0.561 | K3=0.289 | score=0.789 | 869s
+
+Time limit reached (3510s). Stopping after 4 configs.
+
+======================================================================
+Completed 4 configs in 3510s
+
+Top 5 by score:
+  score=0.780 | K1=0.198 | K2=0.567 | K3=0.280 | {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.5, 'decay_every': 400}
+  score=0.789 | K1=0.198 | K2=0.561 | K3=0.289 | {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.3, 'decay_every': 400}
+  score=0.790 | K1=0.198 | K2=0.554 | K3=0.290 | {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.5, 'decay_every': 200}
+  score=0.791 | K1=0.198 | K2=0.561 | K3=0.291 | {'geo_lr': 0.1, 'geo_steps': 500, 'num_mc': 50, 'num_t': 10, 'lr_decay': 0.3, 'decay_every': 200}
+
+Results saved to: models/ensemble/results/hypersweep_results.json
+End: Wed Apr  1 21:22:45 CEST 2026
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 28132038: <geo_sweep> in cluster <dcc> Done
+
+Job <geo_sweep> was submitted from host <hpclogin1> by user <s214374> in cluster <dcc> at Wed Apr  1 20:23:54 2026
+Job was executed on host(s) <4*n-62-18-5>, in queue <gpua10>, as user <s214374> in cluster <dcc> at Wed Apr  1 20:23:55 2026
+</zhome/02/6/167678> was used as the home directory.
+</work3/s214374/AdvancedML> was used as the working directory.
+Started at Wed Apr  1 20:23:55 2026
+Terminated at Wed Apr  1 21:22:46 2026
+Results reported at Wed Apr  1 21:22:46 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+# ===========================================================================
+# run_hypersweep.sh — Grid search over geodesic optimizer hyperparameters
+#
+# Uses already-trained models. Tries different (lr, steps, mc, num_t, decay)
+# combos and ranks by CoV behavior. Auto-stops at ~55 min.
+#
+# Submit:   bsub < batch/run_hypersweep.sh
+# ===========================================================================
+#BSUB -J geo_sweep
+#BSUB -q gpua10
+#BSUB -n 4
+#BSUB -R "rusage[mem=8GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 01:00
+#BSUB -o logs/geo_sweep_%J.out
+#BSUB -e logs/geo_sweep_%J.err
+
+set -euo pipefail
+
+REPO_DIR="/work3/s214374/AdvancedML"
+cd "$REPO_DIR"
+
+module load python3/3.12.7
+module load cuda/12.2.2
+module load cudnn/v9.1.1.17-prod-cuda-12.X
+
+export PATH="$HOME/.local/bin:$PATH"
+source .venv/bin/activate
+export PYTHONUNBUFFERED=1
+export PYTHONPATH="$REPO_DIR/src:$PYTHONPATH"
+
+mkdir -p logs
+
+DEVICE=$(python -c 'import torch; print("cuda" if torch.cuda.is_available() else "cpu")')
+echo "Device: $DEVICE"
+echo "Start: $(date)"
+
+python src/project2/hypersweep.py \
+    --save-dir models/ensemble \
+    --num-reruns 10 \
+    --num-decoders 3 \
+    --num-pairs 10 \
+    --device "$DEVICE" \
+    --max-time 3300
+
+echo "End: $(date)"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3532.00 sec.
+    Max Memory :                                 330 MB
+    Average Memory :                             301.40 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               32438.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                7
+    Run time :                                   3531 sec.
+    Turnaround time :                            3532 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/geo_sweep_28132038.err> for stderr output of this job.
+
